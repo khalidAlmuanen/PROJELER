@@ -32,7 +32,7 @@ public class Program {
      int yorumSatirSayisi = 0;
      int kodSatirSayisi = 0;
      int fonksiyonSayisi = 0;
-
+ 
      try {
          URL url = new URL(dosyaYolu);
          BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -59,7 +59,9 @@ public class Program {
      }
 
      int LOC = javadocSatirSayisi + yorumSatirSayisi + kodSatirSayisi;
-     double yorumSapmaYuzdesi = LOC == 0 ? 0 : ((double) yorumSatirSayisi / LOC) * 100;
+     double YG = ((javadocSatirSayisi + yorumSatirSayisi)*0.8)/fonksiyonSayisi;
+     double YH = (kodSatirSayisi/fonksiyonSayisi)*0.3;
+     double yorumSapmaYuzdesi =  ((100*YG)/YH)-100;
 
      System.out.println("Sınıf: " + "A.java");
      System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisi);

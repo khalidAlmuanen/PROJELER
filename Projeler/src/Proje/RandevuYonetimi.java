@@ -16,17 +16,10 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
 	 * <p>
 	 *   Diş kilinik'te RandevuYonetimi 
 	 * </p>
-	 * @param hastaAdi Randevu almak isteyen hasta adı
-	 * @param hastaSoyadi Randevu almak isteyen hasta soyadı
-	 * @param randevuTarihi Hasta aldığı randevu tarihi
-     * @param doktorAdi Hasta aldığı randevu tarihi
-     * @param randevuId Hastaya ait randevuId
-     * @param yeniTarih Hasta aldığı yeni tarih
-     * @param reddetmeNedeni randevuyu raddetme nedeni
-     * @param acilTarih en yakın zamanda alınabilecek randevu
-     * @param randevuTarihi Hasta aldığı randevu tarihi
-     * @param randevuTarihi Hasta aldığı randevu tarihi
-	 * @return Para çekme işleminin başarılımı geçtiğini döndürür.
+	 * @param ad Randevu almak isteyen hasta adı
+	 * @param Soyad Randevu almak isteyen hasta soyadı
+	 * @param telefon Hastanın telefon numarası
+     * @param tarih Hasta aldığı randevu tarihi
 	 */
 	private List<Randevu> randevuListesi = new ArrayList<>();
 	private int sonRandevuNumarasi = 0;
@@ -35,6 +28,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     @Override
     public void randevuAl(String ad, String soyad, String telefon, LocalDateTime tarih) {
 	     // Randevu alındığında yapılacak işlemler burada gerçekleştirilir 
+        /**
+    	* @param randevu Hasta aldığı randevu 
+         */
         Randevu randevu = new Randevu(ad, soyad, telefon, tarih);
         randevuListesi.add(randevu);
         System.out.println("Randevu başarıyla alındı. Randevu numarası: " + (++sonRandevuNumarasi));
@@ -43,6 +39,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     @Override
     public void randevuIptalEt(int randevuNo) {
 	     // randevuyu iptal etme işlemleri burada gerçekleştirilir
+    	/**
+    	* @param randevuNo Hastaya ait randevu no 
+         */
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); } 
         else
@@ -64,7 +63,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {
     	
     	// randevuları gunceleyen fonksiyon.
-    	
+    	/**
+    	* @param yeniTarih Hasta aldığı yeni tarih 
+         */
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); } 
         
@@ -91,7 +92,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	 
     	// randevu gecmis listeleyen fonksiyon.
     	 
-    	 
+    	/**
+    	*  Daha önce hasta aldığı randevular göster 
+         */
         System.out.println(hastaAdi + " için geçmiş randevular:");
         for (Randevu randevu : randevuListesi) 
         {
@@ -106,7 +109,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	
     	 // randevuyu arayan fonksiyon.
     	 
-    	 
+    	/**
+    	*  istediğiniz hastayı arayın 
+         */
         System.out.println(hastaAdi + " adlı hastanın randevuları:");
         for (Randevu randevu : randevuListesi) 
         {
@@ -122,7 +127,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	
     	  
     	 // en erken randevuyu bulan fonksiyon.
-    	 
+    	/**
+    	* en erken randevu alan hastayı bulun 
+         */
     	 
         if (randevuListesi.isEmpty()) 
         { System.out.println("Randevu bulunamadı. Liste boş.");
@@ -139,10 +146,10 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     @Override
     public void enGecRandevuyuBul() {
     	
-    	
     	 // en gec randevuyu bulan fonksiyon.
-    	
-    	
+    	/**
+    	* en geç randevu alan hastayı bulun 
+         */
         if (randevuListesi.isEmpty()) 
         { 
         	System.out.println("Randevu bulunamadı. Liste boş.");
@@ -159,6 +166,12 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
     
     public String toplamRandevuSayisi() {
+    	
+   	     // toplam Randevu Sayisi bulan fonksiyon.
+
+    	/**
+    	*  randevu alan toplam hasta sayısını bulun 
+         */
         return "toplam randevu sayisi: " + randevuListesi.size();
     }
 	
