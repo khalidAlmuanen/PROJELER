@@ -111,13 +111,16 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         for (Randevu randevu : randevuListesi) 
         {
             if (randevu.getAd().equalsIgnoreCase(hastaAdi))
-            {  System.out.println(randevu); }
+            { 
+            	System.out.println(randevu); 
+            }
         }
     }
 
     @Override
     public void enErkenRandevuyuBul() {
     	/**
+    	 * 
     	 * en erken randevuyu bulan fonksiyon.
     	 * 
     	 */
