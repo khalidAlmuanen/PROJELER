@@ -42,37 +42,27 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     @Override
     public void randevuIptalEt(int randevuNo) {
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
-        {
-            System.out.println("Geçersiz randevu numarası!");
-        } 
+        { System.out.println("Geçersiz randevu numarası!"); } 
         else
-        {
-            randevuListesi.remove(randevuNo - 1);
-            System.out.println("Randevu başarıyla iptal edildi.");
-        }
+        { randevuListesi.remove(randevuNo - 1);
+          System.out.println("Randevu başarıyla iptal edildi."); }
     }
 
     @Override
     public void randevuListesi() {
         System.out.println("Tüm randevular:");
         for (int i = 0; i < randevuListesi.size(); i++) 
-        {
-            System.out.println((i + 1) + ". " + randevuListesi.get(i));
-        }
+        { System.out.println((i + 1) + ". " + randevuListesi.get(i)); }
     }
 
     @Override
     public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
-        {
-            System.out.println("Geçersiz randevu numarası!");
-        } 
+        { System.out.println("Geçersiz randevu numarası!"); } 
         
         else 
-        {
-            randevuListesi.get(randevuNo - 1).setTarih(yeniTarih);
-            System.out.println("Randevu başarıyla güncellendi.");
-        }
+        { randevuListesi.get(randevuNo - 1).setTarih(yeniTarih);
+          System.out.println("Randevu başarıyla güncellendi."); }
     }
 
     @Override
