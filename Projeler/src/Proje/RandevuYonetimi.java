@@ -76,55 +76,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         }
     }
 
-    @Override
-    public void randevuGecmisListesi(String hastaAdi) {
-        System.out.println(hastaAdi + " için geçmiş randevular:");
-        for (Randevu randevu : randevuListesi) {
-            if (randevu.getAd().equals(hastaAdi)) {
-                System.out.println(randevu);
-            }
-        }
-    }
-   
-    @Override
-    public void randevuAra(String hastaAdi) {
-        System.out.println(hastaAdi + " adlı hastanın randevuları:");
-        for (Randevu randevu : randevuListesi) {
-            if (randevu.getAd().equalsIgnoreCase(hastaAdi)) {
-                System.out.println(randevu);
-            }
-        }
-    }
-
-    @Override
-    public void enErkenRandevuyuBul() {
-        if (randevuListesi.isEmpty()) {
-            System.out.println("Randevu bulunamadı. Liste boş.");
-            return;
-        }
-        Randevu enErkenRandevu = randevuListesi.get(0);
-        for (Randevu randevu : randevuListesi) {
-            if (randevu.getTarih().isBefore(enErkenRandevu.getTarih())) {
-                enErkenRandevu = randevu;
-            }
-        }
-        System.out.println("En erken randevu: " + enErkenRandevu);
-    }
-
-    @Override
-    public void enGecRandevuyuBul() {
-        if (randevuListesi.isEmpty()) {
-            System.out.println("Randevu bulunamadı. Liste boş.");
-            return;
-        }
-        Randevu enGecRandevu = randevuListesi.get(0);
-        for (Randevu randevu : randevuListesi) {
-            if (randevu.getTarih().isAfter(enGecRandevu.getTarih())) {
-                enGecRandevu = randevu;
-            }
-        }
-        System.out.println("En geç randevu: " + enGecRandevu);
-    }
+  
     public String toplamRandevuSayisi() {
         return "toplam randevu sayisi: " + randevuListesi.size();
     }
