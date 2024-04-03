@@ -37,9 +37,12 @@ public class Program {
          URL url = new URL(dosyaYolu);
          BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
          String satir;
-
+         
+	        
          while ((satir = reader.readLine()) != null) {
              satir = satir.trim();
+ 	        boolean javadocModu = false;
+
              if (satir.startsWith("/**") || satir.startsWith("*")) {
                  javadocSatirSayisi++;
              } else if (satir.startsWith("//")) {
@@ -61,7 +64,7 @@ public class Program {
      int LOC = javadocSatirSayisi + yorumSatirSayisi + kodSatirSayisi;
      double YG = ((javadocSatirSayisi + yorumSatirSayisi)*0.8)/fonksiyonSayisi;
      double YH = (kodSatirSayisi/fonksiyonSayisi)*0.3;
-     double yorumSapmaYuzdesi =  ((100*YG)/YH)-100;
+     double yorumSapmaYuzdesi =  ((100*YG))/YH-100;
 
      System.out.println("Sınıf: " + "A.java");
      System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisi);

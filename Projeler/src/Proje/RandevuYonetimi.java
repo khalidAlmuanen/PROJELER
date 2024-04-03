@@ -172,6 +172,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	/**
     	*  randevu alan toplam hasta sayısını bulun 
          */
+    	
         return "toplam randevu sayisi: " + randevuListesi.size();
     }
 	
