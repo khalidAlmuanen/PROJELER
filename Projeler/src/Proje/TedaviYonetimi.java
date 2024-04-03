@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * TedaviYonetimiImpl, TedaviYonetimi arabirimini uygulayan bir sınıftır.
+ * TedaviYonetimi , TedaviYonetimi arabirimini uygulayan bir sınıftır.
  */
 
 public class TedaviYonetimi implements ITedaviYonetimi {
@@ -30,6 +30,12 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        this.tedaviNotlari = new HashMap<>();
 	    }
 
+	    /**
+	     * Hasta için yeni bir diş sağlığı kaydı oluşturur.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param bilgi Diş sağlığı bilgileri
+	     */
 	    @Override
 	    public void disSagligiKaydiOlustur(int hastaId, String bilgi, LocalDateTime olusturmaTarihi, String kaydedenKullanici) {
 	        // Diş sağlığı kaydını oluştururken ek özelliklerle birlikte kaydedebiliriz
@@ -42,6 +48,12 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için diş sağlığı kaydı oluşturuldu.");
 	    }
 	    
+	    /**
+	     * Belirli bir hastanın diş sağlığı bilgilerini getirir.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @return Diş sağlığı bilgileri
+	     */
 	    @Override
 	    public String disSagligiBilgisiGetir(int hastaId) {
 	    	// Diş sağlığı kaydı eklemek için
@@ -59,12 +71,26 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        return "Bu hasta için diş sağlığı kaydı bulunamadı.";
 	    }
 
+	    /**
+	     * Hasta için yeni bir tedavi planı oluşturur veya mevcut planı günceller.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param plan Yeni tedavi planı
+	     */
+	    
 	    @Override
 	    public void tedaviPlaniOlustur(int hastaId, String plan) {
 	        tedaviPlanlari.put(hastaId, plan);
 	        System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
 	    }
 
+	    /**
+	     * Belirli bir hastanın tedavi planını günceller.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param yeniPlan Güncellenmiş tedavi planı
+	     */
+	    
 	    @Override
 	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan)
 	    {
@@ -72,6 +98,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için tedavi planı güncellendi.");
 	    }
 
+	    /**
+	     * Hasta için tedavi geçmişini kaydeder.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param gecmis Tedavi geçmişi
+	     */
+	    
 	    @Override
 	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) 
 	    {
@@ -90,6 +123,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için yeni tedavi adımı eklendi.");
 	    }
 
+	    /**
+	     * Belirli bir hastanın tedavi geçmişini getirir.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @return Tedavi geçmişi
+	     */
+	    
 	    public List<String> tedaviGecmisiGetir(int hastaId) 
 	    {
 	        List<String> gecmisBilgileri = new ArrayList<>();
@@ -127,6 +167,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        return gecmisBilgileri;
 	    }
 
+	    /**
+	     * Hasta için tedavi süreçlerini belgelerle destekler.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param belgeler Tedavi belgeleri
+	     */
+	    
 	    @Override
 	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) 
 	    {
@@ -134,6 +181,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için tedavi belgeleri kaydedildi.");
 	    }
 
+	    /**
+	     * Hasta için tedaviye ilişkin notlar ve ilaç reçetelerini kaydeder.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @param notlar Notlar ve ilaç reçeteleri
+	     */
+	    
 	    @Override
 	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) 
 	    {
@@ -152,7 +206,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için yeni tedavi notu kaydedildi.");
 	    }
 
-
+	    /**
+	     * Belirli bir hastanın tedavi notlarını ve ilaç reçetelerini getirir.
+	     * 
+	     * @param hastaId Hasta kimliği
+	     * @return Notlar ve ilaç reçeteleri
+	     */
+	    
 	    @Override
 	    public List<String> tedaviNotlariGetir(int hastaId) 
 	    {

@@ -27,7 +27,7 @@ public class Program {
 	 //System.out.println(r.toplamRandevuSayisi());
 	 
 	 
-	 String dosyaYolu = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
+	 String dosyaYolu = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
      int javadocSatirSayisi = 0;
      int yorumSatirSayisi = 0;
      int kodSatirSayisi = 0;
