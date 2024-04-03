@@ -43,8 +43,8 @@ public class Program {
              satir = satir.trim();
  	        boolean javadocModu = false;
 
-             if (satir.startsWith("/**") || satir.startsWith("*")) {
-                 javadocSatirSayisi++;
+ 	         if (satir.contains("/**") || satir.contains("*")) {
+               javadocSatirSayisi++;
              } else if (satir.startsWith("//")) {
                  yorumSatirSayisi++;
              } else if (!satir.isEmpty()) {
