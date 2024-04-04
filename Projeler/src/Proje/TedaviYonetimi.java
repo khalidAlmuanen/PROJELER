@@ -92,8 +92,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan)
-	    {
+	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan) {
 	        tedaviPlanlari.put(hastaId, yeniPlan);
 	        System.out.println("Hasta için tedavi planı güncellendi.");
 	    }
@@ -106,14 +105,12 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) 
-	    {
+	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) {
 	        tedaviGecmisi.put(hastaId, gecmis);
 	        System.out.println("Hasta için tedavi geçmişi kaydedildi.");
 	    }
 
-	    public void tedaviAdimiEkle(int hastaId, String adim) 
-	    {
+	    public void tedaviAdimiEkle(int hastaId, String adim) {
 	        if (!tedaviAdimlari.containsKey(hastaId)) 
 	        {
 	            tedaviAdimlari.put(hastaId, new ArrayList<>());
@@ -130,8 +127,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     * @return Tedavi geçmişi
 	     */
 	    
-	    public List<String> tedaviGecmisiGetir(int hastaId) 
-	    {
+	    public List<String> tedaviGecmisiGetir(int hastaId) {
 	        List<String> gecmisBilgileri = new ArrayList<>();
 	        List<String> gecmis = tedaviGecmisi.getOrDefault(hastaId, new ArrayList<>());
 	        List<String> adimlar = tedaviAdimlari.getOrDefault(hastaId, new ArrayList<>());
@@ -175,8 +171,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) 
-	    {
+	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) {
 	        tedaviBelgeleri.put(hastaId, belgeler);
 	        System.out.println("Hasta için tedavi belgeleri kaydedildi.");
 	    }
@@ -189,8 +184,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) 
-	    {
+	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) {
 	        if (tedaviNotlari.containsKey(hastaId)) 
 	        {
 	            // Eğer hastanın notları zaten varsa, mevcut notların sonuna yeni notu ekleyelim
@@ -214,8 +208,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public List<String> tedaviNotlariGetir(int hastaId) 
-	    {
+	    public List<String> tedaviNotlariGetir(int hastaId) {
 	        List<String> hastaNotlari = tedaviNotlari.getOrDefault(hastaId, new ArrayList<>());
 	        if (hastaNotlari.isEmpty()) 
 	        {
