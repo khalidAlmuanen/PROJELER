@@ -102,6 +102,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	/**
     	* en erken randevu alan hastayı bulun 
          */   	 
+        // Eğer randevu listesi boş ise uygun bir mesaj yazdırır.
     	if (randevuListesi.isEmpty()) 
     	{ System.out.println("Randevu bulunamadı. Liste boş."); return; }
         // En erken randevuyu ve tarihini saklamak için değişkenler oluşturulur.
@@ -112,6 +113,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         { LocalDateTime tarih = LocalDateTime.parse(randevu.substring(randevu.lastIndexOf(' ') + 1));
             if (tarih.isBefore(enErkenTarih)) 
             { enErkenTarih = tarih;enErkenRandevu = randevu;}}
+        // Bulunan en erken randevu ekrana yazdırılır.
         System.out.println("En erken randevu: " + enErkenRandevu);}
 
     @Override
@@ -120,6 +122,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	/**
     	* en geç randevu alan hastayı bulun 
          */
+        // Eğer randevu listesi boş ise uygun bir mesaj yazdırır.
     	if (randevuListesi.isEmpty()) 
     	{ System.out.println("Randevu bulunamadı. Liste boş."); return; }
         String enGecRandevu = randevuListesi.get(0);
