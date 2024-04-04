@@ -165,7 +165,8 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
 
 	        // Eğer hasta için henüz bir tedavi adımı listesi oluşturulmamışsa, yeni bir liste oluşturulur
-	        if (!tedaviAdimlari.containsKey(hastaId)) {
+	        if (!tedaviAdimlari.containsKey(hastaId)) 
+	        {
 	            tedaviAdimlari.put(hastaId, new ArrayList<>());
 	        }
 
@@ -276,7 +277,8 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        // Belirli bir hastanın tedavi notlarını ve ilaç reçetelerini alır
 	        List<String> hastaNotlari = tedaviNotlari.getOrDefault(hastaId, new ArrayList<>());
 	        // Eğer hastanın notları yoksa, kullanıcıya bilgi verilir
-	        if (hastaNotlari.isEmpty()) {
+	        if (hastaNotlari.isEmpty()) 
+	        {
 	            System.out.println("Hasta için tedavi notu bulunamadı.");
 	        }
 	        // Hasta notlarını döndürür
