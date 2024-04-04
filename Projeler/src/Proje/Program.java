@@ -8,9 +8,8 @@ import java.time.LocalDateTime;
 
 public class Program {
    
-    public static void main(String [] args)
-    {
-        LocalDateTime now = LocalDateTime.now(); // Şu anki tarihi ve saati alır
+    public static void main(String [] args) {
+        LocalDateTime now = LocalDateTime.now(); 
 
         RandevuYonetimi r = new RandevuYonetimi();
 
@@ -47,11 +46,17 @@ public class Program {
 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
                     javadocSatirSayisiA++;
-                } else if (satir.startsWith("//")) {
+                } 
+                else if (satir.startsWith("//")) 
+                {
                     yorumSatirSayisiA++;
-                } else if (!satir.isEmpty()) {
+                } 
+                else if (!satir.isEmpty()) 
+                {
                     kodSatirSayisiA++;
-                }else if (satir.trim().isEmpty()) { // Satırın boş olup olmadığını kontrol eder
+                }
+                else if (satir.trim().isEmpty()) 
+                { 
                     boslukSatirSayisiA++;
                 }
 
@@ -61,7 +66,8 @@ public class Program {
             }
 
             reader.close();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -100,11 +106,17 @@ public class Program {
 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
                     javadocSatirSayisiB++;
-                } else if (satir.startsWith("//")) {
+                } 
+                else if (satir.startsWith("//")) 
+                {
                     yorumSatirSayisiB++;
-                } else if (!satir.isEmpty()) {
+                } 
+                else if (!satir.isEmpty()) 
+                {
                     kodSatirSayisiB++;
-                }else if (satir.trim().isEmpty()) { // Satırın boş olup olmadığını kontrol eder
+                }
+                else if (satir.trim().isEmpty()) 
+                { 
                     boslukSatirSayisiB++;
                 }
 
@@ -114,7 +126,8 @@ public class Program {
             }
 
             reader.close();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -136,7 +149,7 @@ public class Program {
    
 
     
-    String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
+    String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
     int javadocSatirSayisiC = 0;
     int yorumSatirSayisiC = 0;
     int kodSatirSayisiC = 0;
@@ -153,11 +166,17 @@ public class Program {
 
             if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
                 javadocSatirSayisiC++;
-            } else if (satir.startsWith("//")) {
+            } 
+            else if (satir.startsWith("//")) 
+            {
                 yorumSatirSayisiC++;
-            } else if (!satir.isEmpty()) {
+            } 
+            else if (!satir.isEmpty())
+            {
                 kodSatirSayisiC++;
-            }else if (satir.trim().isEmpty()) { // Satırın boş olup olmadığını kontrol eder
+            }
+            else if (satir.trim().isEmpty()) 
+            { 
                 boslukSatirSayisiC++;
             }
 
@@ -167,7 +186,8 @@ public class Program {
         }
 
         reader.close();
-    } catch (IOException e) {
+    } 
+    catch (IOException e) {
         e.printStackTrace();
     }
 
