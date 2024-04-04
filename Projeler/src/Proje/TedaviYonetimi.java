@@ -7,20 +7,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * TedaviYonetimi , TedaviYonetimi arabirimini uygulayan bir sınıftır.
+ * TedaviYonetimi, ITedaviYonetimi arabirimini uygulayan bir sınıftır.
  */
 
 public class TedaviYonetimi implements ITedaviYonetimi {
 	
-    private Map<Integer, Map<String, Object>> disSagligiKayitlari = new HashMap<>();
-    
+        // Diş sağlığı kayıtlarını tutacak olan Map
+        private Map<Integer, Map<String, Object>> disSagligiKayitlari = new HashMap<>();
+        // Tedavi planlarını tutacak olan Map
 	    private Map<Integer, String> tedaviPlanlari;
+	    // Tedavi geçmişini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviGecmisi;
+	    // Tedavi belgelerini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviBelgeleri;
+	    // Tedavi notlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviNotlari;
+	    // Tedavi adımlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
 
-	    
+	    // Kurucu method
 	    public TedaviYonetimi()
 	    {
 	        this.disSagligiKayitlari = new HashMap<>();
@@ -35,6 +40,8 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     * 
 	     * @param hastaId Hasta kimliği
 	     * @param bilgi Diş sağlığı bilgileri
+	     * @param olusturmaTarihi Kaydın oluşturulduğu tarih
+         * @param kaydedenKullanici Kaydı oluşturan kullanıcı
 	     */
 	    @Override
 	    public void disSagligiKaydiOlustur(int hastaId, String bilgi, LocalDateTime olusturmaTarihi, String kaydedenKullanici) {
@@ -80,7 +87,9 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviPlaniOlustur(int hastaId, String plan) {
+	        // Tedavi planını hasta kimliğiyle eşleştirerek kaydediyoruz
 	        tedaviPlanlari.put(hastaId, plan);
+	        // Kullanıcıya bilgi vermek için bir mesaj yazdırıyoruz
 	        System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
 	    }
 
@@ -93,7 +102,9 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan) {
+	        // Hasta kimliğiyle ilişkilendirilmiş olan mevcut tedavi planını güncelliyoruz
 	        tedaviPlanlari.put(hastaId, yeniPlan);
+	        // Kullanıcıya güncelleme hakkında bilgi vermek için bir mesaj yazdırıyoruz
 	        System.out.println("Hasta için tedavi planı güncellendi.");
 	    }
 
@@ -106,17 +117,21 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) {
+	        // Hasta kimliğiyle ilişkilendirilmiş olan tedavi geçmişini kaydediyoruz
 	        tedaviGecmisi.put(hastaId, gecmis);
+	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırıyoruz
 	        System.out.println("Hasta için tedavi geçmişi kaydedildi.");
 	    }
 
 	    public void tedaviAdimiEkle(int hastaId, String adim) {
+	        // Eğer hasta için henüz bir tedavi adımı listesi oluşturulmamışsa, yeni bir liste oluşturur
 	        if (!tedaviAdimlari.containsKey(hastaId)) 
 	        {
 	            tedaviAdimlari.put(hastaId, new ArrayList<>());
 	        }
-	        
+	        // Hasta için tedavi adımları listesine yeni adımı ekler
 	        tedaviAdimlari.get(hastaId).add(adim);
+	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırır
 	        System.out.println("Hasta için yeni tedavi adımı eklendi.");
 	    }
 
@@ -128,38 +143,43 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    public List<String> tedaviGecmisiGetir(int hastaId) {
+	        // Geri dönecek olan tedavi geçmişi bilgilerini tutacak liste
 	        List<String> gecmisBilgileri = new ArrayList<>();
+	        // Hastaya ait tedavi geçmişini ve adımlarını alır, eğer bulunamazsa boş listeler oluşturur
 	        List<String> gecmis = tedaviGecmisi.getOrDefault(hastaId, new ArrayList<>());
 	        List<String> adimlar = tedaviAdimlari.getOrDefault(hastaId, new ArrayList<>());
 
+	        // Eğer hastanın bir tedavi geçmişi varsa
 	        if (!gecmis.isEmpty()) 
 	        {
+	            // "Tedavi Geçmişi:" başlığıyla birlikte her bir geçmiş adımını listeye ekler
 	            gecmisBilgileri.add("Tedavi Geçmişi:");
 	            for (String gecmisAdim : gecmis) 
 	            {
 	                gecmisBilgileri.add(gecmisAdim);
 	            }
 	        }
-	        
+            // Eğer hastanın tedavi geçmişi yoksa, uygun bir mesaj ekler
 	        else 
 	        {
 	            gecmisBilgileri.add("Bu hasta için tedavi geçmişi bulunamadı.");
 	        }
-
+	        // Eğer hastanın bir tedavi adımı varsa
 	        if (!adimlar.isEmpty()) 
 	        {
+	            // "Tedavi Adımları:" başlığıyla birlikte her bir adımı listeye ekler
 	            gecmisBilgileri.add("Tedavi Adımları:");
 	            for (String adim : adimlar) 
 	            {
 	                gecmisBilgileri.add(adim);
 	            }
 	        }
-	        
+            // Eğer hastanın tedavi adımı yoksa, uygun bir mesaj ekler
 	        else 
 	        {
 	            gecmisBilgileri.add("Bu hasta için tedavi adımı bulunamadı.");
 	        }
-
+	        // Oluşturulan bilgiler listesini geri döndürür
 	        return gecmisBilgileri;
 	    }
 
