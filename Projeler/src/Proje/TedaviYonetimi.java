@@ -14,20 +14,15 @@ import java.util.Objects;
 public class TedaviYonetimi implements ITedaviYonetimi {
 	{}
         // Diş sağlığı kayıtlarını tutacak olan Map
-        private Map<Integer, Map<String, Object>> disSagligiKayitlari = new HashMap<>();
-        
+        private Map<Integer, Map<String, Object>> disSagligiKayitlari = new HashMap<>();   
         // Tedavi planlarını tutacak olan Map
 	    private Map<Integer, String> tedaviPlanlari;
-	    
 	    // Tedavi geçmişini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviGecmisi;
-	    
 	    // Tedavi belgelerini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviBelgeleri;
-	    
 	    // Tedavi notlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviNotlari;
-	    
 	    // Tedavi adımlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
 

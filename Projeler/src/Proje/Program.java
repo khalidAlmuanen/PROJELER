@@ -41,7 +41,8 @@ public class Program {
      int yorumSatirSayisi = 0;
      int kodSatirSayisi = 0;
      int fonksiyonSayisi = 0;
- 
+     int boslukSatirSayisi = 0;
+
      try {
          URL url = new URL(dosyaYolu);
          BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -50,14 +51,15 @@ public class Program {
 	        
          while ((satir = reader.readLine()) != null) {
              satir = satir.trim();
- 	        boolean javadocModu = false;
-
+            
  	       if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
                javadocSatirSayisi++;
              } else if (satir.startsWith("//")) {
                  yorumSatirSayisi++;
              } else if (!satir.isEmpty()) {
                  kodSatirSayisi++;
+             }else if (satir.trim().isEmpty()) { // Satırın boş olup olmadığını kontrol eder
+                 boslukSatirSayisi++;
              }
 
              if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
@@ -70,7 +72,7 @@ public class Program {
          e.printStackTrace();
      }
 
-     int LOC = javadocSatirSayisi + yorumSatirSayisi + kodSatirSayisi;
+     int LOC = javadocSatirSayisi + yorumSatirSayisi + kodSatirSayisi + boslukSatirSayisi;
      double YG = ((javadocSatirSayisi + yorumSatirSayisi)*0.8)/fonksiyonSayisi;
      double YH = (kodSatirSayisi/fonksiyonSayisi)*0.3;
      double yorumSapmaYuzdesi =  ((100*YG))/YH-100;
