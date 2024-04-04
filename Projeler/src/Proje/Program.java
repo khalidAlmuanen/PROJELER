@@ -18,12 +18,14 @@ public class Program {
         int fonksiyonSayisiA = 0;
         int boslukSatirSayisiA = 0;
 
-        try {
+        try 
+        {
             URL url = new URL(A_java);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) {
+            while ((satir = reader.readLine()) != null) 
+            {
                 satir = satir.trim();
 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
@@ -81,15 +83,18 @@ public class Program {
         int fonksiyonSayisiB = 0;
         int boslukSatirSayisiB = 0;
 
-        try {
+        try 
+        {
             URL url = new URL(B_java);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) {
+            while ((satir = reader.readLine()) != null) 
+            {
                 satir = satir.trim();
 
-                if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
+                if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
+                {
                     javadocSatirSayisiB++;
                 } 
                 else if (satir.startsWith("//")) 
@@ -105,7 +110,8 @@ public class Program {
                     boslukSatirSayisiB++;
                 }
 
-                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
+                {
                     fonksiyonSayisiB++;
                 }
             }
@@ -135,37 +141,45 @@ public class Program {
 
     
     String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
+   
     int javadocSatirSayisiC = 0;
     int yorumSatirSayisiC = 0;
     int kodSatirSayisiC = 0;
     int fonksiyonSayisiC = 0;
     int boslukSatirSayisiC = 0;
 
-    try {
+    try 
+    {
         URL url = new URL(C_java);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         String satir;
 
-        while ((satir = reader.readLine()) != null) {
+        while ((satir = reader.readLine()) != null) 
+        {
             satir = satir.trim();
 
-            if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
+            if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
+            {
                 javadocSatirSayisiC++;
             } 
+            
             else if (satir.startsWith("//")) 
             {
                 yorumSatirSayisiC++;
             } 
+            
             else if (!satir.isEmpty())
             {
                 kodSatirSayisiC++;
             }
+            
             else if (satir.trim().isEmpty()) 
             { 
                 boslukSatirSayisiC++;
             }
 
-            if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
+            if (satir.contains("(") && satir.contains(")") && satir.endsWith("{"))
+            {
                 fonksiyonSayisiC++;
             }
         }
