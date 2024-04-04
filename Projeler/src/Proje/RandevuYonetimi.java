@@ -84,7 +84,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     @Override
     public void randevuAra(String hastaAdi) { 	
     	 // randevuyu arayan fonksiyon.	 
-    	 System.out.println(hastaAdi + " adlı hastanın randevuları:");for (String randevu : randevuListesi) 
+    	 System.out.println(hastaAdi + " adlı hastanın randevuları:"); for (String randevu : randevuListesi) 
          { if (randevu.startsWith(hastaAdi + " ")) { System.out.println(randevu); } } }
     
     @Override
