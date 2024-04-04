@@ -94,8 +94,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         // Belirtilen hasta adına sahip hastanın randevularını arar ve ekrana yazdırır.
     	 System.out.println(hastaAdi + " adlı hastanın randevuları:");
          for (String randevu : randevuListesi) 
-         { if (randevu.startsWith(hastaAdi + " ")) { System.out.println(randevu); } } }
-    
+         { if (randevu.startsWith(hastaAdi + " ")) { System.out.println(randevu); } } }   
     @Override
     public void enErkenRandevuyuBul() {  	  
     	 // en erken randevuyu bulan fonksiyon.
@@ -115,7 +114,6 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
             { enErkenTarih = tarih;enErkenRandevu = randevu;}}
         // Bulunan en erken randevu ekrana yazdırılır.
         System.out.println("En erken randevu: " + enErkenRandevu);}
-
     @Override
     public void enGecRandevuyuBul() {    	
     	 // en gec randevuyu bulan fonksiyon.
@@ -127,11 +125,13 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	{ System.out.println("Randevu bulunamadı. Liste boş."); return; }
         String enGecRandevu = randevuListesi.get(0);
         LocalDateTime enGecTarih = LocalDateTime.parse(enGecRandevu.substring(enGecRandevu.lastIndexOf(' ') + 1));
+        // Tüm randevuları döngü ile gezerek en geç randevuyu bulunur.
         for (String randevu : randevuListesi) 
         { LocalDateTime tarih = LocalDateTime.parse(randevu.substring(randevu.lastIndexOf(' ') + 1));
             if (tarih.isAfter(enGecTarih))
             { enGecTarih = tarih; enGecRandevu = randevu; } 
             } 
+        // Bulunan en geç randevu ekrana yazdırılır.
         System.out.println("En geç randevu: " + enGecRandevu);
         }
     public String toplamRandevuSayisi() {
