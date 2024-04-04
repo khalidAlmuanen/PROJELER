@@ -59,25 +59,21 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
 
     @Override
-    public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {
-    	
+    public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {   	
     	// randevuları gunceleyen fonksiyon.
     	/**
     	* @param yeniTarih Hasta aldığı yeni tarih 
          */
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
-        { System.out.println("Geçersiz randevu numarası!"); } 
-        
+        { System.out.println("Geçersiz randevu numarası!"); }      
         else 
         { randevuListesi.get(randevuNo - 1).setTarih(yeniTarih);
           System.out.println("Randevu başarıyla güncellendi."); }
     }
 
     @Override
-    public void randevuBilgisiGoster(int randevuNo) {
-    	
-    	 // randevunun bilgileri gosteren fonksiyon.
-    	
+    public void randevuBilgisiGoster(int randevuNo) {   	
+    	 // randevunun bilgileri gosteren fonksiyon.  	
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); } 
         
@@ -86,11 +82,8 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
 
     @Override
-    public void randevuGecmisListesi(String hastaAdi) {
-    	
-    	 
-    	// randevu gecmis listeleyen fonksiyon.
-    	 
+    public void randevuGecmisListesi(String hastaAdi) {	 
+    	// randevu gecmis listeleyen fonksiyon. 	 
     	/**
     	*  Daha önce hasta aldığı randevular göster 
          */
@@ -103,9 +96,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
    
     @Override
-    public void randevuAra(String hastaAdi) {
-    	
-    	
+    public void randevuAra(String hastaAdi) { 	
     	 // randevuyu arayan fonksiyon.
     	 
     	/**
@@ -122,14 +113,11 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
 
     @Override
-    public void enErkenRandevuyuBul() {
-    	
-    	  
+    public void enErkenRandevuyuBul() {  	  
     	 // en erken randevuyu bulan fonksiyon.
     	/**
     	* en erken randevu alan hastayı bulun 
-         */
-    	 
+         */   	 
         if (randevuListesi.isEmpty()) 
         { System.out.println("Randevu bulunamadı. Liste boş.");
             return;}
@@ -143,8 +131,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
 
     @Override
-    public void enGecRandevuyuBul() {
-    	
+    public void enGecRandevuyuBul() {    	
     	 // en gec randevuyu bulan fonksiyon.
     	/**
     	* en geç randevu alan hastayı bulun 
@@ -153,8 +140,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         { 
         	System.out.println("Randevu bulunamadı. Liste boş.");
             return;
-            }
-        
+        }   
         Randevu enGecRandevu = randevuListesi.get(0);
         for (Randevu randevu : randevuListesi)
         {
@@ -165,16 +151,12 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     }
     
     public String toplamRandevuSayisi() {
-    	
    	     // toplam Randevu Sayisi bulan fonksiyon.
-
     	/**
     	*  randevu alan toplam hasta sayısını bulun 
-         */
-    	
+         */	
         return "toplam randevu sayisi: " + randevuListesi.size();
-    }
-	
+    }	
 }
 
 
