@@ -15,14 +15,19 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	
         // Diş sağlığı kayıtlarını tutacak olan Map
         private Map<Integer, Map<String, Object>> disSagligiKayitlari = new HashMap<>();
+        
         // Tedavi planlarını tutacak olan Map
 	    private Map<Integer, String> tedaviPlanlari;
+	    
 	    // Tedavi geçmişini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviGecmisi;
+	    
 	    // Tedavi belgelerini tutacak olan Map
 	    private Map<Integer, List<String>> tedaviBelgeleri;
+	    
 	    // Tedavi notlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviNotlari;
+	    
 	    // Tedavi adımlarını tutacak olan Map
 	    private Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
 
@@ -46,20 +51,24 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    @Override
 	    public void disSagligiKaydiOlustur(int hastaId, String bilgi, LocalDateTime olusturmaTarihi, String kaydedenKullanici) {
-	    	
 	        // Eğer oluşturmaTarihi veya kaydedenKullanici null ise NullPointerException fırlatır
 	        Objects.requireNonNull(olusturmaTarihi, "Oluşturma tarihi null olamaz");
 	        Objects.requireNonNull(kaydedenKullanici, "Kaydeden kullanıcı null olamaz");
-	        
+
 	        // Diş sağlığı kaydını oluştururken ek özelliklerle birlikte bir harita oluşturur
 	        Map<String, Object> disSagligiKaydi = new HashMap<>();
+	        disSagligiKaydi.put("hastaId", hastaId);
 	        disSagligiKaydi.put("bilgi", bilgi);
 	        disSagligiKaydi.put("olusturmaTarihi", olusturmaTarihi);
-	        disSagligiKaydi.put("kaydedenKullanici", kaydedenKullanici);   
+	        disSagligiKaydi.put("kaydedenKullanici", kaydedenKullanici);
+
 	        disSagligiKayitlari.put(hastaId, disSagligiKaydi);
-	        
+
 	        System.out.println("Hasta için diş sağlığı kaydı oluşturuldu.");
+
+	        System.out.println("Oluşturulan Kayıt: " + disSagligiKaydi);
 	    }
+
 	    
 	    /**
 	     * Belirli bir hastanın diş sağlığı bilgilerini getirir.
@@ -83,6 +92,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	                return (String) bilgi;
 	            }
 	        }
+	        
 	        return "Bu hasta için diş sağlığı kaydı bulunamadı.";
 	    }
 
@@ -100,6 +110,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        if (plan != null && !plan.isEmpty()) 
 	        {
 	            tedaviPlanlari.put(hastaId, plan);
+	            
 	            System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
 	        } 
 	        
@@ -127,6 +138,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            if (tedaviPlanlari.containsKey(hastaId)) 
 	            {
 	                tedaviPlanlari.put(hastaId, yeniPlan);
+	                
 	                System.out.println("Hasta için tedavi planı güncellendi.");
 	            } 
 	            
@@ -155,6 +167,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        if (gecmis != null && !gecmis.isEmpty())
 	        {
 	            tedaviGecmisi.put(hastaId, gecmis);
+	            
 	            // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırıyoruz
 	            System.out.println("Hasta için tedavi geçmişi başarıyla kaydedildi.");
 	        } 
@@ -198,6 +211,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        
 	        // Hastaya ait tedavi geçmişini ve adımlarını alır, eğer bulunamazsa boş listeler oluşturur
 	        List<String> gecmis = tedaviGecmisi.getOrDefault(hastaId, new ArrayList<>());
+	        
 	        List<String> adimlar = tedaviAdimlari.getOrDefault(hastaId, new ArrayList<>());
 
 	        // Eğer hastanın bir tedavi geçmişi varsa
@@ -211,11 +225,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	                gecmisBilgileri.add(gecmisAdim);
 	            }
 	        }
+	        
             // Eğer hastanın tedavi geçmişi yoksa, uygun bir mesaj ekler
 	        else 
 	        {
 	            gecmisBilgileri.add("Bu hasta için tedavi geçmişi bulunamadı.");
 	        }
+	        
 	        // Eğer hastanın bir tedavi adımı varsa
 	        if (!adimlar.isEmpty()) 
 	        {
@@ -227,11 +243,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	                gecmisBilgileri.add(adim);
 	            }
 	        }
+	        
             // Eğer hastanın tedavi adımı yoksa, uygun bir mesaj ekler
 	        else 
 	        {
 	            gecmisBilgileri.add("Bu hasta için tedavi adımı bulunamadı.");
 	        }
+	        
 	        // Oluşturulan bilgiler listesini geri döndürür
 	        return gecmisBilgileri;
 	    }
@@ -280,11 +298,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            // Güncellenmiş notları geri koy
 	            tedaviNotlari.put(hastaId, mevcutNotlar);
 	        }
+	        
 	        else 
 	        {
 	            // Eğer hastanın notları yoksa, yeni notları direkt olarak kaydedelim
 	            tedaviNotlari.put(hastaId, List.of(yeniNot));
 	        }
+	        
 	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.
 	        System.out.println("Hasta için yeni tedavi notu kaydedildi.");
 	    }
@@ -313,6 +333,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	 
 	            
 	            System.out.println("Hasta Notları:");
+	            
 	            for (String not : hastaNotlari) 
 	            {
 	                System.out.println(not);
