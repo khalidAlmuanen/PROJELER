@@ -58,9 +58,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        disSagligiKaydi.put("kaydedenKullanici", kaydedenKullanici);
 
 	        disSagligiKayitlari.put(hastaId, disSagligiKaydi);
-
 	        System.out.println("Hasta için diş sağlığı kaydı oluşturuldu.");
-
 	        System.out.println("Oluşturulan Kayıt: " + disSagligiKaydi);
 	    }
 
@@ -79,16 +77,14 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        if (hastaBilgileri == null) 
 	        {
 	            return "Hasta için diş sağlığı kaydı bulunamadı.";
-	        }
-	        
+	        }        
 	        // Diş sağlığı bilgisini getirmek için
 	        Object bilgi = hastaBilgileri.get("bilgi");
 	        
 	        if (bilgi instanceof String) 
 	        {
 	            return (String) bilgi;
-	        }
-	        
+	        }	        
 	        else 
 	        {
 	            return "Hasta için diş sağlığı bilgisi geçerli bir string değil.";
@@ -110,8 +106,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        { 
 	        	tedaviPlanlari.put(hastaId, plan); 
 	            System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
-	        } 
-	        
+	        } 	        
 	        else 
 	        {	
 	            // Eğer tedavi planı null veya boş ise kullanıcıya uygun bir hata mesajı gönderilir	
@@ -132,20 +127,17 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        // Eğer yeni tedavi planı null değilse ve boş değilse işlem yapılır
 	        if (yeniPlan != null && !yeniPlan.isEmpty()) 
 	        {
-	            // Hasta kimliğiyle ilişkilendirilmiş olan mevcut tedavi planını güncelliyoruz
-	        	
+	            // Hasta kimliğiyle ilişkilendirilmiş olan mevcut tedavi planını güncelliyoruz      	
 	            if (tedaviPlanlari.containsKey(hastaId)) 
 	            {           
 	            	tedaviPlanlari.put(hastaId, yeniPlan);       
 	                System.out.println("Hasta için tedavi planı güncellendi.");      
-	            } 
-	            
+	            }           
 	            else 
 	            { 	
 	                System.out.println("Hata: Belirtilen hasta için mevcut bir tedavi planı bulunamadı.");    
 	            }
-	        }
-	        
+	        }	        
 	        else 
 	        {	        	
 	            System.out.println("Hatalı giriş: Yeni tedavi planı boş olamaz.");	            
@@ -191,7 +183,6 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	        // Hasta için tedavi adımları listesine yeni adım eklenir	        
 	        tedaviAdimlari.get(hastaId).add(adim);
-
 	        System.out.println("Hasta için yeni tedavi adımı başarıyla eklendi.");
 	    }
 
@@ -214,42 +205,33 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        // Eğer hastanın bir tedavi geçmişi varsa	        
 	        if (!gecmis.isEmpty()) 
 	        {
-	            // "Tedavi Geçmişi:" başlığıyla birlikte her bir geçmiş adımını listeye ekler
-	        	
-	            gecmisBilgileri.add("Tedavi Geçmişi:");
-	            
+	            // "Tedavi Geçmişi:" başlığıyla birlikte her bir geçmiş adımını listeye ekler      	
+	            gecmisBilgileri.add("Tedavi Geçmişi:");          
 	            for (String gecmisAdim : gecmis) 
 	            {	            	
 	                gecmisBilgileri.add(gecmisAdim);	                
 	            }
-	        }
-	        
+	        }        
             // Eğer hastanın tedavi geçmişi yoksa, uygun bir mesaj ekler	        
 	        else 
 	        {	        	
 	            gecmisBilgileri.add("Bu hasta için tedavi geçmişi bulunamadı.");	            
-	        }
-	        
-	        // Eğer hastanın bir tedavi adımı varsa
-	        
+	        }	        
+	        // Eğer hastanın bir tedavi adımı varsa	        
 	        if (!adimlar.isEmpty()) 
 	        {
 	            // "Tedavi Adımları:" başlığıyla birlikte her bir adımı listeye ekler	        	
-	            gecmisBilgileri.add("Tedavi Adımları:");
-	            
+	            gecmisBilgileri.add("Tedavi Adımları:");	            
 	            for (String adim : adimlar) 
 	            {	            	
 	                gecmisBilgileri.add(adim);                
 	            }
-	        }
-	        
-            // Eğer hastanın tedavi adımı yoksa, uygun bir mesaj ekler
-	        
+	        }        
+            // Eğer hastanın tedavi adımı yoksa, uygun bir mesaj ekler	        
 	        else 
 	        {        	
 	            gecmisBilgileri.add("Bu hasta için tedavi adımı bulunamadı.");	            
-	        }
-	        
+	        }    
 	        // Oluşturulan bilgiler listesini geri döndürür        
 	        return gecmisBilgileri;
 	    }
@@ -265,12 +247,11 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    	
 	        // Belirli bir hastanın tedavi belgelerini kaydetme işlemi yapılır.    	
 	        tedaviBelgeleri.put(hastaId, belgeler);
-	        
+	       
 	        System.out.println("Hasta için tedavi belgeleri başarıyla kaydedildi.");
 
 	        // Kaydedilen belgeleri ekrana yazdırır      
-	        System.out.println("Hasta Belgeleri:");
-	        
+	        System.out.println("Hasta Belgeleri:");       
 	        for (String belge : belgeler)
 	        {	        	
 	            System.out.println(belge);	            
@@ -285,7 +266,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) {
-	    	
+    	
 	        // Eğer hastanın notları zaten varsa, mevcut notların sonuna yeni notu ekleyelim	    	
 	        if (tedaviNotlari.containsKey(hastaId)) 
 	        {
@@ -294,19 +275,16 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            
 	            // Yeni notu ekle            
 	            mevcutNotlar.add(yeniNot);
-	            
+           
 	            // Güncellenmiş notları geri koy	            
 	            tedaviNotlari.put(hastaId, mevcutNotlar);
-	        }
-	        
+	        }        
 	        else 
 	        {
 	            // Eğer hastanın notları yoksa, yeni notları direkt olarak kaydedelim	        	
 	            tedaviNotlari.put(hastaId, List.of(yeniNot));
-	        }
-	        
-	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.
-	        
+	        }        
+	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.	        
 	        System.out.println("Hasta için yeni tedavi notu kaydedildi.");
 	    }
 
@@ -318,25 +296,19 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public List<String> tedaviNotlariGetir(int hastaId) {
-	    	
-	        // Belirli bir hastanın tedavi notlarını ve ilaç reçetelerini alır
-	    	
+	    public List<String> tedaviNotlariGetir(int hastaId) {    	
+	        // Belirli bir hastanın tedavi notlarını ve ilaç reçetelerini alır    	
 	        List<String> hastaNotlari = tedaviNotlari.getOrDefault(hastaId, new ArrayList<>());
 	        
-	        // Eğer hastanın notları yoksa, kullanıcıya bilgi verilir
-	        
+	        // Eğer hastanın notları yoksa, kullanıcıya bilgi verilir        
 	        if (hastaNotlari.isEmpty()) 
 	        {        	
 	            System.out.println("Hasta için tedavi notu bulunamadı.");            
-	        } 
-	        
+	        } 	        
 	        else 
 	        {
-	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	 
-	            
-	            System.out.println("Hasta Notları:");
-	            
+	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	 	            
+	            System.out.println("Hasta Notları:");            
 	            for (String not : hastaNotlari) 
 	            {            	
 	                System.out.println(not);                
