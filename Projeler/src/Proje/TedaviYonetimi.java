@@ -244,7 +244,8 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	        // Eğer hastanın bir tedavi geçmişi varsa
 	        
-	        if (!gecmis.isEmpty()) 
+	        if (!gecmis.isEmpty()
+	        		) 
 	        {
 	            // "Tedavi Geçmişi:" başlığıyla birlikte her bir geçmiş adımını listeye ekler
 	        	
