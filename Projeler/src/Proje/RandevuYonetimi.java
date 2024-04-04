@@ -97,21 +97,19 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         {  if (randevu.getAd().equals(hastaAdi)) 
             { System.out.println(randevu); } }
     }
-  
+    /**
+     * Belirtilen hasta adına sahip hastanın randevularını arar ve ekrana yazdırır.
+     * @param hastaAdi Aranacak hastanın adı
+     */
     @Override
     public void randevuAra(String hastaAdi) { 	
     	 // randevuyu arayan fonksiyon.	 
-    	/**
-    	*  istediğiniz hastayı arayın 
-         */
         System.out.println(hastaAdi + " adlı hastanın randevuları:");
         for (Randevu randevu : randevuListesi) 
-        {
-            if (randevu.getAd().equalsIgnoreCase(hastaAdi))
-            { 	System.out.println(randevu);    }
+        {  if (randevu.getAd().equalsIgnoreCase(hastaAdi))
+            { 	System.out.println(randevu);    } }  
         }
-    }
-
+    
     @Override
     public void enErkenRandevuyuBul() {  	  
     	 // en erken randevuyu bulan fonksiyon.
@@ -123,12 +121,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
             return;}
         Randevu enErkenRandevu = randevuListesi.get(0);
         for (Randevu randevu : randevuListesi) 
-        {
-            if (randevu.getTarih().isBefore(enErkenRandevu.getTarih())) 
-            { enErkenRandevu = randevu;}
-        }
-        System.out.println("En erken randevu: " + enErkenRandevu);
-    }
+        { if (randevu.getTarih().isBefore(enErkenRandevu.getTarih())) 
+            { enErkenRandevu = randevu;} }
+        System.out.println("En erken randevu: " + enErkenRandevu); }
 
     @Override
     public void enGecRandevuyuBul() {    	
@@ -137,16 +132,12 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	* en geç randevu alan hastayı bulun 
          */
         if (randevuListesi.isEmpty()) 
-        { 
-        	System.out.println("Randevu bulunamadı. Liste boş.");
-            return;
-        }   
+        { 	System.out.println("Randevu bulunamadı. Liste boş.");
+            return; }   
         Randevu enGecRandevu = randevuListesi.get(0);
         for (Randevu randevu : randevuListesi)
-        {
-            if (randevu.getTarih().isAfter(enGecRandevu.getTarih()))
-            { enGecRandevu = randevu;}
-        }
+        {  if (randevu.getTarih().isAfter(enGecRandevu.getTarih()))
+            { enGecRandevu = randevu;} }
         System.out.println("En geç randevu: " + enGecRandevu);
     }
     
