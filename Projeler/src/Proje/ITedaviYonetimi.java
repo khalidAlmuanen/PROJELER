@@ -25,11 +25,9 @@ public interface ITedaviYonetimi {
 
     
     void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler);
-
-   
-	void tedaviNotlariKaydet(int hastaId, String yeniNot);
-
     
+    void tedaviNotlariKaydet(int hastaId, String yeniNot);
+
     List<String> tedaviNotlariGetir(int hastaId);
 
 

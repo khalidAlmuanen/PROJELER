@@ -192,7 +192,9 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) {
+	        // Belirli bir hastanın tedavi belgelerini kaydetme işlemi yapılır.
 	        tedaviBelgeleri.put(hastaId, belgeler);
+	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.
 	        System.out.println("Hasta için tedavi belgeleri kaydedildi.");
 	    }
 
@@ -205,11 +207,14 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) {
+	        // Eğer hastanın notları zaten varsa, mevcut notların sonuna yeni notu ekleyelim
 	        if (tedaviNotlari.containsKey(hastaId)) 
 	        {
-	            // Eğer hastanın notları zaten varsa, mevcut notların sonuna yeni notu ekleyelim
+	            // Mevcut notları al
 	            List<String> mevcutNotlar = tedaviNotlari.get(hastaId);
+	            // Yeni notu ekle
 	            mevcutNotlar.add(yeniNot);
+	            // Güncellenmiş notları geri koy
 	            tedaviNotlari.put(hastaId, mevcutNotlar);
 	        }
 	        else 
@@ -217,6 +222,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            // Eğer hastanın notları yoksa, yeni notları direkt olarak kaydedelim
 	            tedaviNotlari.put(hastaId, List.of(yeniNot));
 	        }
+	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.
 	        System.out.println("Hasta için yeni tedavi notu kaydedildi.");
 	    }
 
@@ -229,11 +235,13 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public List<String> tedaviNotlariGetir(int hastaId) {
+	        // Belirli bir hastanın tedavi notlarını ve ilaç reçetelerini alır
 	        List<String> hastaNotlari = tedaviNotlari.getOrDefault(hastaId, new ArrayList<>());
-	        if (hastaNotlari.isEmpty()) 
-	        {
+	        // Eğer hastanın notları yoksa, kullanıcıya bilgi verilir
+	        if (hastaNotlari.isEmpty()) {
 	            System.out.println("Hasta için tedavi notu bulunamadı.");
 	        }
+	        // Hasta notlarını döndürür
 	        return hastaNotlari;
-	    }	
+	    }
 }
