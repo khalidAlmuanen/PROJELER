@@ -40,6 +40,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
 	     // randevuyu iptal etme işlemleri burada gerçekleştirilir
     	/**
     	* @param randevuNo Hastaya ait randevu no 
+    	* @throws IllegalArgumentException Geçersiz randevu numarası girildiğinde fırlatılır
          */
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); } 
@@ -47,7 +48,9 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         { randevuListesi.remove(randevuNo - 1);
           System.out.println("Randevu başarıyla iptal edildi."); }
     }
-
+    /**
+     * Mevcut randevu listesini konsola yazdırır.
+     */
     @Override
     public void randevuListesi() {
  
@@ -57,26 +60,28 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         for (int i = 0; i < randevuListesi.size(); i++) 
         { System.out.println((i + 1) + ". " + randevuListesi.get(i)); }
     }
-
+    /**
+     * Belirtilen randevu numarasına sahip randevunun tarihini günceller.
+     * Eğer belirtilen randevu numarası mevcut değilse veya geçersiz ise bir hata mesajı yazdırır.
+     *
+     * @param randevuNo Güncellenecek randevunun numarası
+     * @param yeniTarih Randevunun güncellenecek yeni tarihi
+     */
     @Override
     public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {   	
     	// randevuları gunceleyen fonksiyon.
-    	/**
-    	* @param yeniTarih Hasta aldığı yeni tarih 
-         */
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); }      
         else 
         { randevuListesi.get(randevuNo - 1).setTarih(yeniTarih);
           System.out.println("Randevu başarıyla güncellendi."); }
     }
-
+    
     @Override
     public void randevuBilgisiGoster(int randevuNo) {   	
     	 // randevunun bilgileri gosteren fonksiyon.  	
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
-        { System.out.println("Geçersiz randevu numarası!"); } 
-        
+        { System.out.println("Geçersiz randevu numarası!"); }  
         else 
         { System.out.println("Randevu Bilgisi: " + randevuListesi.get(randevuNo - 1)); }
     }
@@ -89,16 +94,13 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
          */
         System.out.println(hastaAdi + " için geçmiş randevular:");
         for (Randevu randevu : randevuListesi) 
-        {
-            if (randevu.getAd().equals(hastaAdi)) 
-            { System.out.println(randevu); }
-        }
+        {  if (randevu.getAd().equals(hastaAdi)) 
+            { System.out.println(randevu); } }
     }
-   
+  
     @Override
     public void randevuAra(String hastaAdi) { 	
-    	 // randevuyu arayan fonksiyon.
-    	 
+    	 // randevuyu arayan fonksiyon.	 
     	/**
     	*  istediğiniz hastayı arayın 
          */
@@ -106,9 +108,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         for (Randevu randevu : randevuListesi) 
         {
             if (randevu.getAd().equalsIgnoreCase(hastaAdi))
-            { 
-            	System.out.println(randevu); 
-            }
+            { 	System.out.println(randevu);    }
         }
     }
 
