@@ -252,6 +252,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	        // Kaydedilen belgeleri ekrana yazdırır
 	        System.out.println("Hasta Belgeleri:");
+	        
 	        for (String belge : belgeler)
 	        {
 	            System.out.println(belge);
@@ -309,8 +310,8 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        
 	        else 
 	        {
-	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	        
-	            // Hasta notlarını ekrana yazdırır
+	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	 
+	            
 	            System.out.println("Hasta Notları:");
 	            for (String not : hastaNotlari) 
 	            {
