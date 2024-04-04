@@ -25,6 +25,15 @@ public class Program {
 	 r.randevuGecmisListesi("Khalid");
 	 r.randevuIptalEt(2);*/
 	 //System.out.println(r.toplamRandevuSayisi());
+	/* TedaviYonetimi t = new TedaviYonetimi();
+	 t.disSagligiKaydiOlustur(1, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
+	 t.disSagligiKaydiOlustur(2, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
+	 t.disSagligiKaydiOlustur(3, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
+	 t.disSagligiKaydiOlustur(4, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
+
+	 String bilgi = t1.disSagligiBilgisiGetir(1);
+	 System.out.println("Hasta 1 için diş sağlığı bilgisi: \"" + bilgi + "\""); */
+	 
 	 
 	 
 	 String dosyaYolu = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
@@ -73,7 +82,7 @@ public class Program {
      System.out.println("LOC: " + LOC);
      System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisi);
      System.out.printf("Yorum Sapma Yüzdesi: %.2f%%\n", yorumSapmaYuzdesi);
- }
+ } 
 
 }
 	

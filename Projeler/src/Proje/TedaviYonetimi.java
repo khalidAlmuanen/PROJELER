@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * TedaviYonetimi, ITedaviYonetimi arabirimini uygulayan bir sınıftır.
@@ -45,13 +46,17 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    @Override
 	    public void disSagligiKaydiOlustur(int hastaId, String bilgi, LocalDateTime olusturmaTarihi, String kaydedenKullanici) {
-	        // Diş sağlığı kaydını oluştururken ek özelliklerle birlikte kaydedebiliriz
+	        // Eğer oluşturmaTarihi veya kaydedenKullanici null ise NullPointerException fırlatır
+	        Objects.requireNonNull(olusturmaTarihi, "Oluşturma tarihi null olamaz");
+	        Objects.requireNonNull(kaydedenKullanici, "Kaydeden kullanıcı null olamaz");
+	        
+	        // Diş sağlığı kaydını oluştururken ek özelliklerle birlikte bir harita oluşturur
 	        Map<String, Object> disSagligiKaydi = new HashMap<>();
 	        disSagligiKaydi.put("bilgi", bilgi);
 	        disSagligiKaydi.put("olusturmaTarihi", olusturmaTarihi);
-	        disSagligiKaydi.put("kaydedenKullanici", kaydedenKullanici);
-	        
+	        disSagligiKaydi.put("kaydedenKullanici", kaydedenKullanici);   
 	        disSagligiKayitlari.put(hastaId, disSagligiKaydi);
+	        
 	        System.out.println("Hasta için diş sağlığı kaydı oluşturuldu.");
 	    }
 	    
@@ -87,10 +92,18 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviPlaniOlustur(int hastaId, String plan) {
-	        // Tedavi planını hasta kimliğiyle eşleştirerek kaydediyoruz
-	        tedaviPlanlari.put(hastaId, plan);
-	        // Kullanıcıya bilgi vermek için bir mesaj yazdırıyoruz
-	        System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
+	        // Eğer tedavi planı null değilse ve boş değilse işlem yapılır
+	        if (plan != null && !plan.isEmpty()) 
+	        {
+	            tedaviPlanlari.put(hastaId, plan);
+	            System.out.println("Hasta için yeni tedavi planı oluşturuldu.");
+	        } 
+	        
+	        else 
+	        {
+	            // Eğer tedavi planı null veya boş ise kullanıcıya uygun bir hata mesajı gönderilir
+	            System.out.println("Hatalı giriş: Tedavi planı boş olamaz.");
+	        }
 	    }
 
 	    /**
@@ -102,10 +115,26 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan) {
-	        // Hasta kimliğiyle ilişkilendirilmiş olan mevcut tedavi planını güncelliyoruz
-	        tedaviPlanlari.put(hastaId, yeniPlan);
-	        // Kullanıcıya güncelleme hakkında bilgi vermek için bir mesaj yazdırıyoruz
-	        System.out.println("Hasta için tedavi planı güncellendi.");
+	        // Eğer yeni tedavi planı null değilse ve boş değilse işlem yapılır
+	        if (yeniPlan != null && !yeniPlan.isEmpty()) 
+	        {
+	            // Hasta kimliğiyle ilişkilendirilmiş olan mevcut tedavi planını güncelliyoruz
+	            if (tedaviPlanlari.containsKey(hastaId)) 
+	            {
+	                tedaviPlanlari.put(hastaId, yeniPlan);
+	                System.out.println("Hasta için tedavi planı güncellendi.");
+	            } 
+	            
+	            else 
+	            {
+	                System.out.println("Hata: Belirtilen hasta için mevcut bir tedavi planı bulunamadı.");
+	            }
+	        }
+	        
+	        else 
+	        {
+	            System.out.println("Hatalı giriş: Yeni tedavi planı boş olamaz.");
+	        }
 	    }
 
 	    /**
@@ -116,22 +145,34 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    
 	    @Override
 	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) {
-	        // Hasta kimliğiyle ilişkilendirilmiş olan tedavi geçmişini kaydediyoruz
-	        tedaviGecmisi.put(hastaId, gecmis);
-	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırıyoruz
-	        System.out.println("Hasta için tedavi geçmişi kaydedildi.");
+	        // Eğer gecmis null değilse ve boş değilse işlem yapılır
+	        if (gecmis != null && !gecmis.isEmpty())
+	        {
+	            tedaviGecmisi.put(hastaId, gecmis);
+	            // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırıyoruz
+	            System.out.println("Hasta için tedavi geçmişi başarıyla kaydedildi.");
+	        } 
+	        
+	        else 
+	        {
+	            System.out.println("Hatalı giriş: Tedavi geçmişi boş olamaz.");
+	        }
 	    }
 
+	    @Override
 	    public void tedaviAdimiEkle(int hastaId, String adim) {
-	        // Eğer hasta için henüz bir tedavi adımı listesi oluşturulmamışsa, yeni bir liste oluşturur
-	        if (!tedaviAdimlari.containsKey(hastaId)) 
-	        {
+	        // Hasta için tedavi adımlarının listesini tutan bir Map oluşturulur
+	        Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
+
+	        // Eğer hasta için henüz bir tedavi adımı listesi oluşturulmamışsa, yeni bir liste oluşturulur
+	        if (!tedaviAdimlari.containsKey(hastaId)) {
 	            tedaviAdimlari.put(hastaId, new ArrayList<>());
 	        }
-	        // Hasta için tedavi adımları listesine yeni adımı ekler
+
+	        // Hasta için tedavi adımları listesine yeni adım eklenir
 	        tedaviAdimlari.get(hastaId).add(adim);
-	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırır
-	        System.out.println("Hasta için yeni tedavi adımı eklendi.");
+
+	        System.out.println("Hasta için yeni tedavi adımı başarıyla eklendi.");
 	    }
 
 	    /**
@@ -140,6 +181,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     * @return Tedavi geçmişi
 	     */
 	    
+	    @Override
 	    public List<String> tedaviGecmisiGetir(int hastaId) {
 	        // Geri dönecek olan tedavi geçmişi bilgilerini tutacak liste
 	        List<String> gecmisBilgileri = new ArrayList<>();

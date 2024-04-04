@@ -31,6 +31,7 @@ public interface ITedaviYonetimi {
     List<String> tedaviNotlariGetir(int hastaId);
 
 
+	void tedaviAdimiEkle(int hastaId, String adim);
 
 }
 
