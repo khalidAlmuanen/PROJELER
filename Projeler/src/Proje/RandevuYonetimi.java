@@ -20,7 +20,6 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
      * @param tarih Hasta aldığı randevu tarihi
 	 */
 	private List<String> randevuListesi = new ArrayList<>(); private int sonRandevuNumarasi = 0;
-	
     @Override
     public void randevuAl(String ad, String soyad, String telefon, LocalDateTime tarih) {
 	     // Randevu alındığında yapılacak işlemler burada gerçekleştirilir 
@@ -37,9 +36,11 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	* @param randevuNo Hastaya ait randevu no 
     	* @throws IllegalArgumentException Geçersiz randevu numarası girildiğinde fırlatılır
          */
-    	if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
+    	if (randevuNo <= 0 || randevuNo > randevuListesi.size())
+            // Geçersiz randevu numarası kontrolü
     	{ System.out.println("Geçersiz randevu numarası!"); } 
-    	else { randevuListesi.remove(randevuNo - 1); System.out.println("Randevu başarıyla iptal edildi."); } }
+    	else { randevuListesi.remove(randevuNo - 1); 
+    	System.out.println("Randevu başarıyla iptal edildi."); } }
     /**
      * Mevcut randevu listesini konsola yazdırır.
      */
@@ -48,6 +49,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	 // randevuları listeleyen fonksiyon.	 
         System.out.println("Tüm randevular:");
         for (int i = 0; i < randevuListesi.size(); i++) 
+         // Listenin her elemanını sırayla yazdırma
         { System.out.println((i + 1) + ". " + randevuListesi.get(i)); } }
     /**
      * Belirtilen randevu numarasına sahip randevunun tarihini günceller.
@@ -58,9 +60,10 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
      */
     @Override
     public void randevuGuncelle(int randevuNo, LocalDateTime yeniTarih) {   	
-    	// randevuları gunceleyen fonksiyon.
+    	// Belirtilen randevu numarasına sahip randevunun tarihini günceller.
     	if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
     	{  System.out.println("Geçersiz randevu numarası!"); }
+        // Yeni tarih bilgisini randevu metni içerisine ekleyerek güncelleme
     	else { String randevu = randevuListesi.get(randevuNo - 1);
     	randevu = randevu.substring(0, randevu.lastIndexOf(' ') + 1) + yeniTarih.toString(); 
     	randevuListesi.set(randevuNo - 1, randevu); System.out.println("Randevu başarıyla güncellendi."); } }
@@ -71,7 +74,6 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         if (randevuNo <= 0 || randevuNo > randevuListesi.size()) 
         { System.out.println("Geçersiz randevu numarası!"); }  
         else { System.out.println("Randevu Bilgisi: " + randevuListesi.get(randevuNo - 1)); } }
-
     @Override
     public void randevuGecmisListesi(String hastaAdi) {	 
     	// randevu gecmis listeleyen fonksiyon. 	 
@@ -81,14 +83,15 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	System.out.println(hastaAdi + " için geçmiş randevular:");
         for (String randevu : randevuListesi) 
         { String[] randevuBilgileri = randevu.split(" "); 
-        if (randevuBilgileri[0].equals(hastaAdi)) { System.out.println(randevu);  } } }
+        if (randevuBilgileri[0].equals(hastaAdi)) 
+        { System.out.println(randevu);  } } }
     /**
      * Belirtilen hasta adına sahip hastanın randevularını arar ve ekrana yazdırır.
      * @param hastaAdi Aranacak hastanın adı
      */
     @Override
     public void randevuAra(String hastaAdi) { 	
-    	 // randevuyu arayan fonksiyon.	 
+        // Belirtilen hasta adına sahip hastanın randevularını arar ve ekrana yazdırır.
     	 System.out.println(hastaAdi + " adlı hastanın randevuları:");
          for (String randevu : randevuListesi) 
          { if (randevu.startsWith(hastaAdi + " ")) { System.out.println(randevu); } } }
@@ -101,7 +104,10 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
          */   	 
     	if (randevuListesi.isEmpty()) 
     	{ System.out.println("Randevu bulunamadı. Liste boş."); return; }
-        String enErkenRandevu = randevuListesi.get(0); LocalDateTime enErkenTarih = LocalDateTime.parse(enErkenRandevu.substring(enErkenRandevu.lastIndexOf(' ') + 1));
+        // En erken randevuyu ve tarihini saklamak için değişkenler oluşturulur.
+        String enErkenRandevu = randevuListesi.get(0); 
+        LocalDateTime enErkenTarih = LocalDateTime.parse(enErkenRandevu.substring(enErkenRandevu.lastIndexOf(' ') + 1));
+        // Tüm randevuları döngü ile gezerek en erken randevuyu bulunur.
         for (String randevu : randevuListesi) 
         { LocalDateTime tarih = LocalDateTime.parse(randevu.substring(randevu.lastIndexOf(' ') + 1));
             if (tarih.isBefore(enErkenTarih)) 
