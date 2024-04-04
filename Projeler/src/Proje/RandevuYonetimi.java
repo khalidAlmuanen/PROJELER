@@ -94,8 +94,7 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
     	* en erken randevu alan hastayı bulun 
          */   	 
     	if (randevuListesi.isEmpty()) 
-    	{ System.out.println("Randevu bulunamadı. Liste boş."); return; } String enErkenRandevu = randevuListesi.get(0); LocalDateTime enErkenTarih = LocalDateTime.parse(enErkenRandevu.substring(enErkenRandevu.lastIndexOf(' ') + 1));
-        for (String randevu : randevuListesi) 
+    	{ System.out.println("Randevu bulunamadı. Liste boş."); return; } String enErkenRandevu = randevuListesi.get(0); LocalDateTime enErkenTarih = LocalDateTime.parse(enErkenRandevu.substring(enErkenRandevu.lastIndexOf(' ') + 1)); for (String randevu : randevuListesi) 
         { LocalDateTime tarih = LocalDateTime.parse(randevu.substring(randevu.lastIndexOf(' ') + 1)); if (tarih.isBefore(enErkenTarih)) { enErkenTarih = tarih;enErkenRandevu = randevu;}} System.out.println("En erken randevu: " + enErkenRandevu);}
 
     @Override
