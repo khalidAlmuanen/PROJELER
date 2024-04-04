@@ -79,21 +79,25 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    @Override
 	    public String disSagligiBilgisiGetir(int hastaId) {
 	    	
-	    	// Diş sağlığı kaydı eklemek için
 	        Map<String, Object> hastaBilgileri = disSagligiKayitlari.get(hastaId);
 	        
-	        if (hastaBilgileri != null) 
+	        // Eğer kayıt bulunamazsa, kullanıcıya bilgi verilir
+	        if (hastaBilgileri == null) 
 	        {
-	        	// Diş sağlığı bilgisini getirmek için
-	            Object bilgi = hastaBilgileri.get("disSagligiBilgisi");
-	            
-	            if (bilgi instanceof String) 
-	            {
-	                return (String) bilgi;
-	            }
+	            return "Hasta için diş sağlığı kaydı bulunamadı.";
 	        }
 	        
-	        return "Bu hasta için diş sağlığı kaydı bulunamadı.";
+	        // Diş sağlığı bilgisini getirmek için
+	        Object bilgi = hastaBilgileri.get("bilgi");
+	        
+	        if (bilgi instanceof String) 
+	        {
+	            return (String) bilgi;
+	        }
+	        else 
+	        {
+	            return "Hasta için diş sağlığı bilgisi geçerli bir string değil.";
+	        }
 	    }
 
 	    /**
