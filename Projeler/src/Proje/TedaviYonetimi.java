@@ -248,8 +248,14 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        // Belirli bir hastanın tedavi belgelerini kaydetme işlemi yapılır.
 	        tedaviBelgeleri.put(hastaId, belgeler);
 	        
-	        // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj gösterilir.
-	        System.out.println("Hasta için tedavi belgeleri kaydedildi.");
+	        System.out.println("Hasta için tedavi belgeleri başarıyla kaydedildi.");
+
+	        // Kaydedilen belgeleri ekrana yazdırır
+	        System.out.println("Hasta Belgeleri:");
+	        for (String belge : belgeler)
+	        {
+	            System.out.println(belge);
+	        }
 	    }
 
 	    /**
@@ -299,8 +305,19 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        if (hastaNotlari.isEmpty()) 
 	        {
 	            System.out.println("Hasta için tedavi notu bulunamadı.");
+	        } 
+	        
+	        else 
+	        {
+	            System.out.println("Hasta için tedavi notları başarıyla alındı.");	        
+	            // Hasta notlarını ekrana yazdırır
+	            System.out.println("Hasta Notları:");
+	            for (String not : hastaNotlari) 
+	            {
+	                System.out.println(not);
+	            }
 	        }
-	        // Hasta notlarını döndürür
+	        
 	        return hastaNotlari;
 	    }
 }
