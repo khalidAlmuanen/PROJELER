@@ -24,7 +24,6 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
 	private List<Randevu> randevuListesi = new ArrayList<>();
 	private int sonRandevuNumarasi = 0;
 	
- 
     @Override
     public void randevuAl(String ad, String soyad, String telefon, LocalDateTime tarih) {
 	     // Randevu alındığında yapılacak işlemler burada gerçekleştirilir 
