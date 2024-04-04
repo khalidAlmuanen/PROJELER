@@ -130,9 +130,10 @@ public class RandevuYonetimi implements IRandevuYonetimi  {
         for (String randevu : randevuListesi) 
         { LocalDateTime tarih = LocalDateTime.parse(randevu.substring(randevu.lastIndexOf(' ') + 1));
             if (tarih.isAfter(enGecTarih))
-            { enGecTarih = tarih; enGecRandevu = randevu; } } 
-        System.out.println("En geç randevu: " + enGecRandevu);}
-    
+            { enGecTarih = tarih; enGecRandevu = randevu; } 
+            } 
+        System.out.println("En geç randevu: " + enGecRandevu);
+        }
     public String toplamRandevuSayisi() {
    	     // toplam Randevu Sayisi bulan fonksiyon.
     	/**
