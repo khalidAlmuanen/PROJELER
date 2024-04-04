@@ -94,6 +94,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        {
 	            return (String) bilgi;
 	        }
+	        
 	        else 
 	        {
 	            return "Hasta için diş sağlığı bilgisi geçerli bir string değil.";
