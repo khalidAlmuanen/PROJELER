@@ -110,7 +110,6 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	    /**
 	     * Hasta için tedavi geçmişini kaydeder.
-	     * 
 	     * @param hastaId Hasta kimliği
 	     * @param gecmis Tedavi geçmişi
 	     */
@@ -137,7 +136,6 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	    /**
 	     * Belirli bir hastanın tedavi geçmişini getirir.
-	     * 
 	     * @param hastaId Hasta kimliği
 	     * @return Tedavi geçmişi
 	     */
@@ -184,8 +182,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    }
 
 	    /**
-	     * Hasta için tedavi süreçlerini belgelerle destekler.
-	     * 
+	     * Hasta için tedavi süreçlerini belgelerle destekler. 
 	     * @param hastaId Hasta kimliği
 	     * @param belgeler Tedavi belgeleri
 	     */
@@ -200,7 +197,6 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 
 	    /**
 	     * Hasta için tedaviye ilişkin notlar ve ilaç reçetelerini kaydeder.
-	     * 
 	     * @param hastaId Hasta kimliği
 	     * @param notlar Notlar ve ilaç reçeteleri
 	     */
