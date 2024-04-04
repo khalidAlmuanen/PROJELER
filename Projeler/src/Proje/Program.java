@@ -11,24 +11,6 @@ public class Program {
     public static void main(String [] args) {
         LocalDateTime now = LocalDateTime.now(); 
 
-        RandevuYonetimi r = new RandevuYonetimi();
-
-        // r.randevuAl("Khalid", "Ali", "881827", now);
-        //r.randevuAl("Umut", "Ahmet", "88929", now);
-        // r.randevuAl("Nezar", "Yildirim", "38272", now);
-        /* r.randevuBilgisiGoster(2);
-         r.randevuGecmisListesi("Khalid");
-         r.randevuIptalEt(2);*/
-        //System.out.println(r.toplamRandevuSayisi());
-        /* TedaviYonetimi t = new TedaviYonetimi();
-         t.disSagligiKaydiOlustur(1, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
-         t.disSagligiKaydiOlustur(2, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
-         t.disSagligiKaydiOlustur(3, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
-         t.disSagligiKaydiOlustur(4, "Düzenli diş fırçalama yapılmalıdır.", LocalDateTime.now(), "Admin");
-
-         String bilgi = t1.disSagligiBilgisiGetir(1);
-         System.out.println("Hasta 1 için diş sağlığı bilgisi: \"" + bilgi + "\""); */
-
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         int javadocSatirSayisiA = 0;
         int yorumSatirSayisiA = 0;
@@ -44,7 +26,8 @@ public class Program {
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
-                if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
+                if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
+                {
                     javadocSatirSayisiA++;
                 } 
                 else if (satir.startsWith("//")) 
@@ -60,7 +43,8 @@ public class Program {
                     boslukSatirSayisiA++;
                 }
 
-                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
+                {
                     fonksiyonSayisiA++;
                 }
             }
@@ -90,6 +74,7 @@ public class Program {
 
 
         String B_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
+        
         int javadocSatirSayisiB = 0;
         int yorumSatirSayisiB = 0;
         int kodSatirSayisiB = 0;
