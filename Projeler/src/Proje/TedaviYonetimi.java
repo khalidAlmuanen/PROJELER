@@ -49,7 +49,6 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        // Eğer oluşturmaTarihi veya kaydedenKullanici null ise NullPointerException fırlatır
 	        Objects.requireNonNull(olusturmaTarihi, "Oluşturma tarihi null olamaz");
 	        Objects.requireNonNull(kaydedenKullanici, "Kaydeden kullanıcı null olamaz");
-
 	        // Diş sağlığı kaydını oluştururken ek özelliklerle birlikte bir harita oluşturur
 	        Map<String, Object> disSagligiKaydi = new HashMap<>();
 	        disSagligiKaydi.put("hastaId", hastaId);
@@ -61,8 +60,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	        System.out.println("Hasta için diş sağlığı kaydı oluşturuldu.");
 	        System.out.println("Oluşturulan Kayıt: " + disSagligiKaydi);
 	    }
-
-	    
+    
 	    /**
 	     * Belirli bir hastanın diş sağlığı bilgilerini getirir.
 	     * 
@@ -70,8 +68,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     * @return Diş sağlığı bilgileri
 	     */
 	    @Override
-	    public String disSagligiBilgisiGetir(int hastaId) {
-	    	
+	    public String disSagligiBilgisiGetir(int hastaId) {	    	
 	        Map<String, Object> hastaBilgileri = disSagligiKayitlari.get(hastaId);
 	        // Eğer kayıt bulunamazsa, kullanıcıya bilgi verilir
 	        if (hastaBilgileri == null) 
@@ -79,8 +76,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	            return "Hasta için diş sağlığı kaydı bulunamadı.";
 	        }        
 	        // Diş sağlığı bilgisini getirmek için
-	        Object bilgi = hastaBilgileri.get("bilgi");
-	        
+	        Object bilgi = hastaBilgileri.get("bilgi");	        
 	        if (bilgi instanceof String) 
 	        {
 	            return (String) bilgi;
@@ -99,8 +95,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviPlaniOlustur(int hastaId, String plan) {
-	    	
+	    public void tedaviPlaniOlustur(int hastaId, String plan) {	    	
 	        // Eğer tedavi planı null değilse ve boş değilse işlem yapılır
 	        if (plan != null && !plan.isEmpty()) 
 	        { 
@@ -122,8 +117,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan) {
-	    	
+	    public void tedaviPlaniGuncelle(int hastaId, String yeniPlan) {	    	
 	        // Eğer yeni tedavi planı null değilse ve boş değilse işlem yapılır
 	        if (yeniPlan != null && !yeniPlan.isEmpty()) 
 	        {
@@ -151,17 +145,14 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) {
-	    	
+	    public void tedaviGecmisiKaydet(int hastaId, List<String> gecmis) {	    	
 	        // Eğer gecmis null değilse ve boş değilse işlem yapılır	    	
 	        if (gecmis != null && !gecmis.isEmpty())
 	        {        	
-	            tedaviGecmisi.put(hastaId, gecmis);
-	            
+	            tedaviGecmisi.put(hastaId, gecmis);            
 	            // Kullanıcıya işlemin başarıyla gerçekleştirildiğine dair bir mesaj yazdırıyoruz            
 	            System.out.println("Hasta için tedavi geçmişi başarıyla kaydedildi.");
-	        } 
-	        
+	        } 	        
 	        else 
 	        {
 	            // Eğer gecmis null veya boş ise kullanıcıya uygun bir hata mesajı gönderilir	    	
@@ -170,17 +161,14 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	    }
 
 	    @Override
-	    public void tedaviAdimiEkle(int hastaId, String adim) {
-	    	
+	    public void tedaviAdimiEkle(int hastaId, String adim) {	    	
 	        // Hasta için tedavi adımlarının listesini tutan bir Map oluşturulur	    	
 	        Map<Integer, List<String>> tedaviAdimlari = new HashMap<>();
-
 	        // Eğer hasta için henüz bir tedavi adımı listesi oluşturulmamışsa, yeni bir liste oluşturulur	        
 	        if (!tedaviAdimlari.containsKey(hastaId)) 
 	        {	        	
 	            tedaviAdimlari.put(hastaId, new ArrayList<>());	            
 	        }
-
 	        // Hasta için tedavi adımları listesine yeni adım eklenir	        
 	        tedaviAdimlari.get(hastaId).add(adim);
 	        System.out.println("Hasta için yeni tedavi adımı başarıyla eklendi.");
@@ -193,15 +181,12 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public List<String> tedaviGecmisiGetir(int hastaId) {
-	    	
+	    public List<String> tedaviGecmisiGetir(int hastaId) {    	
 	        // Geri dönecek olan tedavi geçmişi bilgilerini tutacak liste	    	
-	        List<String> gecmisBilgileri = new ArrayList<>();
-	        
+	        List<String> gecmisBilgileri = new ArrayList<>();        
 	        // Hastaya ait tedavi geçmişini ve adımlarını alır, eğer bulunamazsa boş listeler oluşturur	        
 	        List<String> gecmis = tedaviGecmisi.getOrDefault(hastaId, new ArrayList<>());	        
 	        List<String> adimlar = tedaviAdimlari.getOrDefault(hastaId, new ArrayList<>());
-
 	        // Eğer hastanın bir tedavi geçmişi varsa	        
 	        if (!gecmis.isEmpty()) 
 	        {
@@ -243,13 +228,10 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) {
-	    	
+	    public void tedaviBelgeleriKaydet(int hastaId, List<String> belgeler) {	    	
 	        // Belirli bir hastanın tedavi belgelerini kaydetme işlemi yapılır.    	
-	        tedaviBelgeleri.put(hastaId, belgeler);
-	       
+	        tedaviBelgeleri.put(hastaId, belgeler);	       
 	        System.out.println("Hasta için tedavi belgeleri başarıyla kaydedildi.");
-
 	        // Kaydedilen belgeleri ekrana yazdırır      
 	        System.out.println("Hasta Belgeleri:");       
 	        for (String belge : belgeler)
@@ -265,8 +247,7 @@ public class TedaviYonetimi implements ITedaviYonetimi {
 	     */
 	    
 	    @Override
-	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) {
-    	
+	    public void tedaviNotlariKaydet(int hastaId, String yeniNot) {  	
 	        // Eğer hastanın notları zaten varsa, mevcut notların sonuna yeni notu ekleyelim	    	
 	        if (tedaviNotlari.containsKey(hastaId)) 
 	        {
