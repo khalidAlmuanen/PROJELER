@@ -37,8 +37,7 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) 
-            {
+            while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
                 Matcher yorumMatcherA = yorumPatternA.matcher(satir);
@@ -64,8 +63,7 @@ public class Program {
                     boslukSatirSayisiA++;
                 }
 
-                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
-                {
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
                     fonksiyonSayisiA++;
                 }
             }
@@ -113,8 +111,7 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null)  
-            {
+            while ((satir = reader.readLine()) != null)  {
                 satir = satir.trim();
                 
                 Matcher yorumMatcherB = yorumPatternB.matcher(satir);
@@ -194,8 +191,7 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
             String satir;
-            while ((satir = reader.readLine()) != null) 
-            {
+            while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
                 Matcher javadocMatcherC = javadocPatternC.matcher(satir);
@@ -220,8 +216,7 @@ public class Program {
                     boslukSatirSayisiC++;
                 }
 
-                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
-                {
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
                     fonksiyonSayisiC++;
                 }
             }
