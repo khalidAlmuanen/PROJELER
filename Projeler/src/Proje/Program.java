@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 
 public class Program {
    
-    public static void main(String [] args) {
+    public static void main(String [] args) 
+    {
         LocalDateTime now = LocalDateTime.now(); 
 
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
@@ -36,7 +37,8 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) {
+            while ((satir = reader.readLine()) != null) 
+            {
                 satir = satir.trim();
 
                 Matcher yorumMatcherA = yorumPatternA.matcher(satir);
@@ -111,7 +113,8 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null)  {
+            while ((satir = reader.readLine()) != null)  
+            {
                 satir = satir.trim();
                 
                 Matcher yorumMatcherB = yorumPatternB.matcher(satir);
@@ -191,7 +194,8 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
             String satir;
-            while ((satir = reader.readLine()) != null) {
+            while ((satir = reader.readLine()) != null) 
+            {
                 satir = satir.trim();
 
                 Matcher javadocMatcherC = javadocPatternC.matcher(satir);
@@ -199,17 +203,25 @@ public class Program {
                 Matcher kodDeseniMatcherC = kodDeseniPatternC.matcher(satir);
                 Matcher boslukDeseniMatcherC = boslukDeseniPatternC.matcher(satir);
 
-                if (javadocMatcherC.matches()) {
+                if (javadocMatcherC.matches())
+                {
                     javadocSatirSayisiC++;
-                } else if (yorumMatcherC.matches()) {
+                } 
+                else if (yorumMatcherC.matches()) 
+                {
                     yorumSatirSayisiC++;
-                } else if (!satir.isEmpty()) {
+                } 
+                else if (!satir.isEmpty()) 
+                {
                     kodSatirSayisiC++;
-                } else if (satir.trim().isEmpty()) {
+                } 
+                else if (satir.trim().isEmpty()) 
+                {
                     boslukSatirSayisiC++;
                 }
 
-                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
+                {
                     fonksiyonSayisiC++;
                 }
             }
