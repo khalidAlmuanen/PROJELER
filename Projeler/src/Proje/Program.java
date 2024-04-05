@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Program {
    
@@ -22,6 +24,11 @@ public class Program {
         int fonksiyonSayisiA = 0;
         
         int boslukSatirSayisiA = 0;
+        
+        Pattern yorumPatternA = Pattern.compile("^\\s*//.*");
+        Pattern fonksiyonPatternA = Pattern.compile("\\(.*\\)\\s*\\{");
+        Pattern kodDeseniPatternA = Pattern.compile("\\S");
+        Pattern boslukDeseniPatternA = Pattern.compile("^\\s*$");
 
         try 
         {
@@ -32,11 +39,17 @@ public class Program {
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
+                Matcher yorumMatcher = yorumPatternA.matcher(satir);
+                Matcher fonksiyonMatcher = fonksiyonPatternA.matcher(satir);
+                Matcher kodDeseniMatcher = kodDeseniPatternA.matcher(satir);
+                Matcher boslukDeseniMatcher = boslukDeseniPatternA.matcher(satir);
+                
+                
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
                     javadocSatirSayisiA++;
                 } 
-                else if (satir.startsWith("//")) 
+                else if (yorumMatcher.matches()) 
                 {
                     yorumSatirSayisiA++;
                 } 
@@ -87,6 +100,11 @@ public class Program {
         int fonksiyonSayisiB = 0;
         int boslukSatirSayisiB = 0;
 
+        Pattern yorumPatternB = Pattern.compile("^\\s*//.*");
+        Pattern fonksiyonPatternB = Pattern.compile("\\(.*\\)\\s*\\{");
+        Pattern kodDeseniPatternB = Pattern.compile("\\S");
+        Pattern boslukDeseniPatternB = Pattern.compile("^\\s*$");
+        
         try 
         {
             URL url = new URL(B_java);
@@ -95,7 +113,12 @@ public class Program {
 
             while ((satir = reader.readLine()) != null)  {
                 satir = satir.trim();
-
+                
+                Matcher yorumMatcher = yorumPatternB.matcher(satir);
+                Matcher fonksiyonMatcher = fonksiyonPatternB.matcher(satir);
+                Matcher kodDeseniMatcher = kodDeseniPatternB.matcher(satir);
+                Matcher boslukDeseniMatcher = boslukDeseniPatternB.matcher(satir);
+             
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
                     javadocSatirSayisiB++;
@@ -151,6 +174,11 @@ public class Program {
     int fonksiyonSayisiC = 0;
     int boslukSatirSayisiC = 0;
 
+    Pattern yorumPatternC = Pattern.compile("^\\s*//.*");
+    Pattern fonksiyonPatternC = Pattern.compile("\\(.*\\)\\s*\\{");
+    Pattern kodDeseniPatternC = Pattern.compile("\\S");
+    Pattern boslukDeseniPatternC = Pattern.compile("^\\s*$");
+   
     try 
     {
         URL url = new URL(C_java);
@@ -159,7 +187,12 @@ public class Program {
 
         while ((satir = reader.readLine()) != null) {
             satir = satir.trim();
-
+           
+            Matcher yorumMatcher = yorumPatternC.matcher(satir);
+            Matcher fonksiyonMatcher = fonksiyonPatternC.matcher(satir);
+            Matcher kodDeseniMatcher = kodDeseniPatternC.matcher(satir);
+            Matcher boslukDeseniMatcher = boslukDeseniPatternC.matcher(satir);
+          
             if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
                 
             	javadocSatirSayisiC++;
@@ -200,11 +233,17 @@ public class Program {
 
 
     System.out.println("Sınıf: " + "C.java");
+    
     System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
+    
     System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiC);
+    
     System.out.println("Kod Satır Sayısı: " + kodSatirSayisiC);
+    
     System.out.println("LOC: " + LOC_C);
+    
     System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiC);
+    
     System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiC);
 }
 
