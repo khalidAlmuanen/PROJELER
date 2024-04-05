@@ -12,10 +12,15 @@ public class Program {
         LocalDateTime now = LocalDateTime.now(); 
 
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
+        
         int javadocSatirSayisiA = 0;
+        
         int yorumSatirSayisiA = 0;
+        
         int kodSatirSayisiA = 0;
+       
         int fonksiyonSayisiA = 0;
+        
         int boslukSatirSayisiA = 0;
 
         try 
@@ -24,8 +29,7 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) 
-            {
+            while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
@@ -89,8 +93,7 @@ public class Program {
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String satir;
 
-            while ((satir = reader.readLine()) != null) 
-            {
+            while ((satir = reader.readLine()) != null)  {
                 satir = satir.trim();
 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
@@ -154,13 +157,12 @@ public class Program {
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         String satir;
 
-        while ((satir = reader.readLine()) != null) 
-        {
+        while ((satir = reader.readLine()) != null) {
             satir = satir.trim();
 
-            if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
-            {
-                javadocSatirSayisiC++;
+            if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
+                
+            	javadocSatirSayisiC++;
             } 
             
             else if (satir.startsWith("//")) 
@@ -168,7 +170,8 @@ public class Program {
                 yorumSatirSayisiC++;
             } 
             
-            else if (!satir.isEmpty())
+            else if 
+            (!satir.isEmpty())
             {
                 kodSatirSayisiC++;
             }
