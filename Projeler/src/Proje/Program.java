@@ -25,11 +25,11 @@ public class Program {
         
         int boslukSatirSayisiA = 0;
         
-        Pattern yorumPatternA = Pattern.compile("^\\s*//.*");
         Pattern fonksiyonPatternA = Pattern.compile("\\(.*\\)\\s*\\{");
+        Pattern javadocPatternA = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
+        Pattern yorumPatternA = Pattern.compile("^\\s*//.*");
         Pattern kodDeseniPatternA = Pattern.compile("\\S");
         Pattern boslukDeseniPatternA = Pattern.compile("^\\s*$");
-
         try 
         {
             URL url = new URL(A_java);
@@ -39,17 +39,17 @@ public class Program {
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
-                Matcher yorumMatcher = yorumPatternA.matcher(satir);
-                Matcher fonksiyonMatcher = fonksiyonPatternA.matcher(satir);
-                Matcher kodDeseniMatcher = kodDeseniPatternA.matcher(satir);
-                Matcher boslukDeseniMatcher = boslukDeseniPatternA.matcher(satir);
+                Matcher yorumMatcherA = yorumPatternA.matcher(satir);
+                Matcher fonksiyonMatcherA = fonksiyonPatternA.matcher(satir);
+                Matcher kodDeseniMatcherA = kodDeseniPatternA.matcher(satir);
+                Matcher boslukDeseniMatcherA = boslukDeseniPatternA.matcher(satir);
                 
                 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
                     javadocSatirSayisiA++;
                 } 
-                else if (yorumMatcher.matches()) 
+                else if (yorumMatcherA.matches()) 
                 {
                     yorumSatirSayisiA++;
                 } 
@@ -114,10 +114,10 @@ public class Program {
             while ((satir = reader.readLine()) != null)  {
                 satir = satir.trim();
                 
-                Matcher yorumMatcher = yorumPatternB.matcher(satir);
-                Matcher fonksiyonMatcher = fonksiyonPatternB.matcher(satir);
-                Matcher kodDeseniMatcher = kodDeseniPatternB.matcher(satir);
-                Matcher boslukDeseniMatcher = boslukDeseniPatternB.matcher(satir);
+                Matcher yorumMatcherB = yorumPatternB.matcher(satir);
+                Matcher fonksiyonMatcherB = fonksiyonPatternB.matcher(satir);
+                Matcher kodDeseniMatcherB = kodDeseniPatternB.matcher(satir);
+                Matcher boslukDeseniMatcherB = boslukDeseniPatternB.matcher(satir);
              
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
@@ -155,97 +155,81 @@ public class Program {
 
 
         System.out.println("Sınıf: " + "B.java");
+      
         System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiB);
+        
         System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiB);
+       
         System.out.println("Kod Satır Sayısı: " + kodSatirSayisiB);
+       
         System.out.println("LOC: " + LOC_B);
+       
         System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiB);
+       
         System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiB);
+       
         System.out.printf("\n----------------------------\n");
 
    
 
     
-    String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
-   
-    int javadocSatirSayisiC = 0;
-    int yorumSatirSayisiC = 0;
-    int kodSatirSayisiC = 0;
-    int fonksiyonSayisiC = 0;
-    int boslukSatirSayisiC = 0;
+        String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
 
-    Pattern yorumPatternC = Pattern.compile("^\\s*//.*");
-    Pattern fonksiyonPatternC = Pattern.compile("\\(.*\\)\\s*\\{");
-    Pattern kodDeseniPatternC = Pattern.compile("\\S");
-    Pattern boslukDeseniPatternC = Pattern.compile("^\\s*$");
-   
-    try 
-    {
-        URL url = new URL(C_java);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-        String satir;
+        int javadocSatirSayisiC = 0;
+        int yorumSatirSayisiC = 0;
+        int kodSatirSayisiC = 0;
+        int fonksiyonSayisiC = 0;
+        int boslukSatirSayisiC = 0;
 
-        while ((satir = reader.readLine()) != null) {
-            satir = satir.trim();
-           
-            Matcher yorumMatcher = yorumPatternC.matcher(satir);
-            Matcher fonksiyonMatcher = fonksiyonPatternC.matcher(satir);
-            Matcher kodDeseniMatcher = kodDeseniPatternC.matcher(satir);
-            Matcher boslukDeseniMatcher = boslukDeseniPatternC.matcher(satir);
-          
-            if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) {
-                
-            	javadocSatirSayisiC++;
-            } 
-            
-            else if (satir.startsWith("//")) 
-            {
-                yorumSatirSayisiC++;
-            } 
-            
-            else if 
-            (!satir.isEmpty())
-            {
-                kodSatirSayisiC++;
-            }
-            
-            else if (satir.trim().isEmpty()) 
-            { 
-                boslukSatirSayisiC++;
+        Pattern javadocPatternC = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
+        Pattern yorumPatternC = Pattern.compile("^\\s*//.*");
+        Pattern kodDeseniPatternC = Pattern.compile("\\S");
+        Pattern boslukDeseniPatternC = Pattern.compile("^\\s*$");
+
+        try {
+            URL url = new URL(C_java);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            String satir;
+            while ((satir = reader.readLine()) != null) {
+                satir = satir.trim();
+
+                Matcher javadocMatcherC = javadocPatternC.matcher(satir);
+                Matcher yorumMatcherC = yorumPatternC.matcher(satir);
+                Matcher kodDeseniMatcherC = kodDeseniPatternC.matcher(satir);
+                Matcher boslukDeseniMatcherC = boslukDeseniPatternC.matcher(satir);
+
+                if (javadocMatcherC.matches()) {
+                    javadocSatirSayisiC++;
+                } else if (yorumMatcherC.matches()) {
+                    yorumSatirSayisiC++;
+                } else if (!satir.isEmpty()) {
+                    kodSatirSayisiC++;
+                } else if (satir.trim().isEmpty()) {
+                    boslukSatirSayisiC++;
+                }
+
+                if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
+                    fonksiyonSayisiC++;
+                }
             }
 
-            if (satir.contains("(") && satir.contains(")") && satir.endsWith("{"))
-            {
-                fonksiyonSayisiC++;
-            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        reader.close();
-    } 
-    catch (IOException e) {
-        e.printStackTrace();
+        int LOC_C = javadocSatirSayisiC + yorumSatirSayisiC + kodSatirSayisiC + boslukSatirSayisiC;
+        double YG_C = ((javadocSatirSayisiC + yorumSatirSayisiC) * 0.8) / fonksiyonSayisiC;
+        double YH_C = (kodSatirSayisiC / fonksiyonSayisiC) * 0.3;
+        double yorumSapmaYuzdesiC = ((100 * YG_C)) / YH_C - 100;
+
+        System.out.println("Sınıf: " + "C.java");
+        System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
+        System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiC);
+        System.out.println("Kod Satır Sayısı: " + kodSatirSayisiC);
+        System.out.println("LOC: " + LOC_C);
+        System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiC);
+        System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiC);
     }
-
-    int LOC_C = javadocSatirSayisiC + yorumSatirSayisiC + kodSatirSayisiC + boslukSatirSayisiC;
-    double YG_C = ((javadocSatirSayisiC + yorumSatirSayisiC)*0.8)/fonksiyonSayisiC;
-    double YH_C = (kodSatirSayisiC/fonksiyonSayisiC)*0.3;
-    double yorumSapmaYuzdesiC =  ((100*YG_C))/YH_C-100;
-
-
-    System.out.println("Sınıf: " + "C.java");
-    
-    System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
-    
-    System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiC);
-    
-    System.out.println("Kod Satır Sayısı: " + kodSatirSayisiC);
-    
-    System.out.println("LOC: " + LOC_C);
-    
-    System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiC);
-    
-    System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiC);
 }
-
-}
-
