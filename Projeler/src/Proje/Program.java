@@ -14,16 +14,13 @@ public class Program {
     {
         LocalDateTime now = LocalDateTime.now(); 
 
+        // Class A
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         
-        int javadocSatirSayisiA = 0;
-         
-        int yorumSatirSayisiA = 0;
-        
-        int kodSatirSayisiA = 0;
-       
-        int fonksiyonSayisiA = 0;
-        
+        int javadocSatirSayisiA = 0;         
+        int yorumSatirSayisiA = 0;        
+        int kodSatirSayisiA = 0;       
+        int fonksiyonSayisiA = 0;        
         int boslukSatirSayisiA = 0;
         
         Pattern fonksiyonPatternA = Pattern.compile("\\(.*\\)\\s*\\{");
@@ -46,22 +43,18 @@ public class Program {
                 Matcher kodDeseniMatcherA = kodDeseniPatternA.matcher(satir);
                 Matcher boslukDeseniMatcherA = boslukDeseniPatternA.matcher(satir);
                 
-                
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
                     javadocSatirSayisiA++;
                 } 
-                
                 else if (yorumMatcherA.matches()) 
                 {
                     yorumSatirSayisiA++;
                 } 
-                
                 else if (!satir.isEmpty()) 
                 {
                     kodSatirSayisiA++;
                 }
-                
                 else if (satir.trim().isEmpty()) 
                 { 
                     boslukSatirSayisiA++;
@@ -74,7 +67,6 @@ public class Program {
 
             reader.close();
         } 
-        
         catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,9 +86,7 @@ public class Program {
         System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiA);
         System.out.printf("\n----------------------------\n");
 
-        
-
-
+        // Class B
         String B_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
         
         int javadocSatirSayisiB = 0;
@@ -175,9 +165,7 @@ public class Program {
        
         System.out.printf("\n----------------------------\n");
 
-   
-
-    
+        // Class C
         String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
 
         int javadocSatirSayisiC = 0;
