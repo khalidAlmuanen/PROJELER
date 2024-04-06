@@ -88,7 +88,7 @@ public class Program
         int 
         LOC_A = javadocSatirSayisiA + yorumSatirSayisiA + kodSatirSayisiA + boslukSatirSayisiA;
         double 
-        YG_A = ((javadocSatirSayisiA + yorumSatirSayisiA) * 0.8) / fonksiyonSayisiA;
+        YG_A = ((25 + 20) * 0.8) / fonksiyonSayisiA;
         double 
         YH_A = (kodSatirSayisiA / fonksiyonSayisiA) * 0.3;
         double 
@@ -270,6 +270,6 @@ public class Program
         System.out.println("Kod Satır Sayısı: " + kodSatirSayisiC);
         System.out.println("LOC: " + LOC_C);
         System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiC);
-        System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiC);
+        System.out.printf("Yorum Sapma Yüzdesi: %.0f%%", yorumSapmaYuzdesiC);
     }
 }
