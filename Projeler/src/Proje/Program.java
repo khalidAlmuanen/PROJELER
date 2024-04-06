@@ -176,7 +176,7 @@ public class Program
         double 
         YH_B = (kodSatirSayisiB/fonksiyonSayisiB)*0.3;
         double 
-        yorumSapmaYuzdesiB = ((100*YG_B))/YH_B-100;
+        yorumSapmaYuzdesiB = ((100*YG_B)/YH_B)-100;
         
         System.out.println
         ("Sınıf: " + "B.java");    
@@ -191,7 +191,7 @@ public class Program
         System.out.println
         ("Fonksiyon Sayısı: " + fonksiyonSayisiB);       
         System.out.printf
-        ("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiB);      
+        ("Yorum Sapma Yüzdesi: %.0f%%", yorumSapmaYuzdesiB);      
         System.out.printf
         ("\n----------------------------\n");
 
@@ -207,7 +207,6 @@ public class Program
         fonksiyonSayisiC = 0;
         int 
         boslukSatirSayisiC = 0;
-
         Pattern 
         javadocPatternC = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
         Pattern 
@@ -219,11 +218,9 @@ public class Program
         try {
             URL url = new URL(C_java);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-
             String satir;
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
-
                 Matcher 
                 javadocMatcherC = javadocPatternC.matcher(satir);
                 Matcher 
@@ -257,7 +254,6 @@ public class Program
         catch (IOException e) {
             e.printStackTrace();
         }
-
         int 
         LOC_C = javadocSatirSayisiC + yorumSatirSayisiC + kodSatirSayisiC + boslukSatirSayisiC;
         double 
@@ -266,7 +262,6 @@ public class Program
         YH_C = (kodSatirSayisiC / fonksiyonSayisiC) * 0.3;
         double
         yorumSapmaYuzdesiC = ((100 * YG_C)) / YH_C - 100;
-
         System.out.println
         ("Sınıf: " + "C.java");
         System.out.println
