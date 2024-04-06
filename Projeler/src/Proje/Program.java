@@ -17,7 +17,7 @@ public class Program {
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         
         int javadocSatirSayisiA = 0;
-        
+         
         int yorumSatirSayisiA = 0;
         
         int kodSatirSayisiA = 0;
@@ -31,6 +31,7 @@ public class Program {
         Pattern yorumPatternA = Pattern.compile("^\\s*//.*");
         Pattern kodDeseniPatternA = Pattern.compile("\\S");
         Pattern boslukDeseniPatternA = Pattern.compile("^\\s*$");
+        
         try 
         {
             URL url = new URL(A_java);
@@ -50,14 +51,17 @@ public class Program {
                 {
                     javadocSatirSayisiA++;
                 } 
+                
                 else if (yorumMatcherA.matches()) 
                 {
                     yorumSatirSayisiA++;
                 } 
+                
                 else if (!satir.isEmpty()) 
                 {
                     kodSatirSayisiA++;
                 }
+                
                 else if (satir.trim().isEmpty()) 
                 { 
                     boslukSatirSayisiA++;
@@ -70,6 +74,7 @@ public class Program {
 
             reader.close();
         } 
+        
         catch (IOException e) {
             e.printStackTrace();
         }
