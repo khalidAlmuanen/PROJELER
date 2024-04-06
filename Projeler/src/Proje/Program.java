@@ -9,14 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Program 
-{
-   
+{  
     public static void main(String [] args) 
     {
         LocalDateTime 
         now = LocalDateTime.now(); 
-
-   
+       
         String 
         A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         
@@ -82,13 +80,11 @@ public class Program
                     fonksiyonSayisiA++;
                 }
             }
-
             reader.close();
         } 
         catch (IOException e) {
             e.printStackTrace();
         }
-
         int 
         LOC_A = javadocSatirSayisiA + yorumSatirSayisiA + kodSatirSayisiA + boslukSatirSayisiA;
         double 
@@ -97,7 +93,6 @@ public class Program
         YH_A = (kodSatirSayisiA / fonksiyonSayisiA) * 0.3;
         double 
         yorumSapmaYuzdesiA = (((100 * YG_A)) / YH_A) - 100;
-
 
         System.out.println("Sınıf: " + "A.java");
         System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiA);
@@ -109,8 +104,7 @@ public class Program
         System.out.printf("\n----------------------------\n");
 
         String 
-        B_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
-        
+        B_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";      
         int 
         javadocSatirSayisiB = 0;
         int 
@@ -139,10 +133,8 @@ public class Program
             reader = new BufferedReader(new InputStreamReader(url.openStream()));
             String 
             satir;
-
             while ((satir = reader.readLine()) != null)  {
-                satir = satir.trim();
-                
+                satir = satir.trim();              
                 Matcher 
                 yorumMatcherB = yorumPatternB.matcher(satir);
                 Matcher 
@@ -150,8 +142,7 @@ public class Program
                 Matcher 
                 kodDeseniMatcherB = kodDeseniPatternB.matcher(satir);
                 Matcher 
-                boslukDeseniMatcherB = boslukDeseniPatternB.matcher(satir);
-             
+                boslukDeseniMatcherB = boslukDeseniPatternB.matcher(satir);             
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
                     javadocSatirSayisiB++;
@@ -168,7 +159,6 @@ public class Program
                 { 
                     boslukSatirSayisiB++;
                 }
-
                 if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) 
                 {
                     fonksiyonSayisiB++;
@@ -179,7 +169,6 @@ public class Program
         catch (IOException e) {
             e.printStackTrace();
         }
-
         int 
         LOC_B = javadocSatirSayisiB + yorumSatirSayisiB + kodSatirSayisiB + boslukSatirSayisiB;
         double 
@@ -188,20 +177,26 @@ public class Program
         YH_B = (kodSatirSayisiB/fonksiyonSayisiB)*0.3;
         double 
         yorumSapmaYuzdesiB = ((100*YG_B))/YH_B-100;
-
-
-        System.out.println("Sınıf: " + "B.java");    
-        System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiB);       
-        System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiB);     
-        System.out.println("Kod Satır Sayısı: " + kodSatirSayisiB);       
-        System.out.println("LOC: " + LOC_B);       
-        System.out.println("Fonksiyon Sayısı: " + fonksiyonSayisiB);       
-        System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiB);      
-        System.out.printf("\n----------------------------\n");
+        
+        System.out.println
+        ("Sınıf: " + "B.java");    
+        System.out.println
+        ("Javadoc Satır Sayısı: " + javadocSatirSayisiB);       
+        System.out.println
+        ("Yorum Satır Sayısı: " + yorumSatirSayisiB);     
+        System.out.println
+        ("Kod Satır Sayısı: " + kodSatirSayisiB);       
+        System.out.println
+        ("LOC: " + LOC_B);       
+        System.out.println
+        ("Fonksiyon Sayısı: " + fonksiyonSayisiB);       
+        System.out.printf
+        ("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiB);      
+        System.out.printf
+        ("\n----------------------------\n");
 
         String 
         C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
-
         int 
         javadocSatirSayisiC = 0;
         int 
@@ -221,15 +216,13 @@ public class Program
         kodDeseniPatternC = Pattern.compile("\\S");
         Pattern 
         boslukDeseniPatternC = Pattern.compile("^\\s*$");
-
         try {
             URL url = new URL(C_java);
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
             String satir;
             while ((satir = reader.readLine()) != null) {
-                satir = 
-                		satir.trim();
+                satir = satir.trim();
 
                 Matcher 
                 javadocMatcherC = javadocPatternC.matcher(satir);
@@ -239,7 +232,6 @@ public class Program
                 kodDeseniMatcherC = kodDeseniPatternC.matcher(satir);
                 Matcher 
                 boslukDeseniMatcherC = boslukDeseniPatternC.matcher(satir);
-
                 if (javadocMatcherC.matches())
                 {
                     javadocSatirSayisiC++;
@@ -255,13 +247,11 @@ public class Program
                 else if (satir.trim().isEmpty()) 
                 {
                     boslukSatirSayisiC++;
-                }
-                
+                }               
                 if (satir.contains("(") && satir.contains(")") && satir.endsWith("{")) {
                     fonksiyonSayisiC++;
                 }
             }
-
             reader.close();           
         } 
         catch (IOException e) {
@@ -277,8 +267,10 @@ public class Program
         double
         yorumSapmaYuzdesiC = ((100 * YG_C)) / YH_C - 100;
 
-        System.out.println("Sınıf: " + "C.java");
-        System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
+        System.out.println
+        ("Sınıf: " + "C.java");
+        System.out.println
+        ("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
         System.out.println("Yorum Satır Sayısı: " + yorumSatirSayisiC);
         System.out.println("Kod Satır Sayısı: " + kodSatirSayisiC);
         System.out.println("LOC: " + LOC_C);
