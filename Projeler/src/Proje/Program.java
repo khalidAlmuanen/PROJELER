@@ -14,7 +14,7 @@ public class Program {
     {
         LocalDateTime now = LocalDateTime.now(); 
 
-        // Class A
+   
         String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         
         int javadocSatirSayisiA = 0;         
@@ -86,7 +86,6 @@ public class Program {
         System.out.printf("Yorum Sapma Yüzdesi: %.2f%%", yorumSapmaYuzdesiA);
         System.out.printf("\n----------------------------\n");
 
-        // Class B
         String B_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/TedaviYonetimi.java";
         
         int javadocSatirSayisiB = 0;
@@ -165,7 +164,6 @@ public class Program {
        
         System.out.printf("\n----------------------------\n");
 
-        // Class C
         String C_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/Program.java";
 
         int javadocSatirSayisiC = 0;
