@@ -8,14 +8,16 @@ import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Program {
+public class Program 
+{
    
     public static void main(String [] args) 
     {
         LocalDateTime now = LocalDateTime.now(); 
 
    
-        String A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
+        String 
+        A_java = "https://raw.githubusercontent.com/khalidAlmuanen/PROJELER/master/Projeler/src/Proje/RandevuYonetimi.java";
         
         int javadocSatirSayisiA = 0;         
         int yorumSatirSayisiA = 0;        
@@ -23,11 +25,16 @@ public class Program {
         int fonksiyonSayisiA = 0;        
         int boslukSatirSayisiA = 0;
         
-        Pattern fonksiyonPatternA = Pattern.compile("\\(.*\\)\\s*\\{");
-        Pattern javadocPatternA = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
-        Pattern yorumPatternA = Pattern.compile("^\\s*//.*");
-        Pattern kodDeseniPatternA = Pattern.compile("\\S");
-        Pattern boslukDeseniPatternA = Pattern.compile("^\\s*$");
+        Pattern 
+        fonksiyonPatternA = Pattern.compile("\\(.*\\)\\s*\\{");
+        Pattern 
+        javadocPatternA = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
+        Pattern 
+        yorumPatternA = Pattern.compile("^\\s*//.*");
+        Pattern 
+        kodDeseniPatternA = Pattern.compile("\\S");
+        Pattern 
+        boslukDeseniPatternA = Pattern.compile("^\\s*$");
         
         try 
         {
@@ -38,10 +45,14 @@ public class Program {
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
-                Matcher yorumMatcherA = yorumPatternA.matcher(satir);
-                Matcher fonksiyonMatcherA = fonksiyonPatternA.matcher(satir);
-                Matcher kodDeseniMatcherA = kodDeseniPatternA.matcher(satir);
-                Matcher boslukDeseniMatcherA = boslukDeseniPatternA.matcher(satir);
+                Matcher 
+                yorumMatcherA = yorumPatternA.matcher(satir);
+                Matcher 
+                fonksiyonMatcherA = fonksiyonPatternA.matcher(satir);
+                Matcher
+                kodDeseniMatcherA = kodDeseniPatternA.matcher(satir);
+                Matcher 
+                boslukDeseniMatcherA = boslukDeseniPatternA.matcher(satir);
                 
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
@@ -71,10 +82,14 @@ public class Program {
             e.printStackTrace();
         }
 
-        int LOC_A = javadocSatirSayisiA + yorumSatirSayisiA + kodSatirSayisiA + boslukSatirSayisiA;
-        double YG_A = ((javadocSatirSayisiA + yorumSatirSayisiA) * 0.8) / fonksiyonSayisiA;
-        double YH_A = (kodSatirSayisiA / fonksiyonSayisiA) * 0.3;
-        double yorumSapmaYuzdesiA = (((100 * YG_A)) / YH_A) - 100;
+        int LOC_A = 
+        		javadocSatirSayisiA + yorumSatirSayisiA + kodSatirSayisiA + boslukSatirSayisiA;
+        double YG_A = 
+        		((javadocSatirSayisiA + yorumSatirSayisiA) * 0.8) / fonksiyonSayisiA;
+        double YH_A = 
+        		(kodSatirSayisiA / fonksiyonSayisiA) * 0.3;
+        double yorumSapmaYuzdesiA = 
+        		(((100 * YG_A)) / YH_A) - 100;
 
 
         System.out.println("Sınıf: " + "A.java");
@@ -94,10 +109,14 @@ public class Program {
         int fonksiyonSayisiB = 0;
         int boslukSatirSayisiB = 0;
 
-        Pattern yorumPatternB = Pattern.compile("^\\s*//.*");
-        Pattern fonksiyonPatternB = Pattern.compile("\\(.*\\)\\s*\\{");
-        Pattern kodDeseniPatternB = Pattern.compile("\\S");
-        Pattern boslukDeseniPatternB = Pattern.compile("^\\s*$");
+        Pattern 
+        yorumPatternB = Pattern.compile("^\\s*//.*");
+        Pattern 
+        fonksiyonPatternB = Pattern.compile("\\(.*\\)\\s*\\{");
+        Pattern 
+        kodDeseniPatternB = Pattern.compile("\\S");
+        Pattern 
+        boslukDeseniPatternB = Pattern.compile("^\\s*$");
         
         try 
         {
@@ -108,10 +127,14 @@ public class Program {
             while ((satir = reader.readLine()) != null)  {
                 satir = satir.trim();
                 
-                Matcher yorumMatcherB = yorumPatternB.matcher(satir);
-                Matcher fonksiyonMatcherB = fonksiyonPatternB.matcher(satir);
-                Matcher kodDeseniMatcherB = kodDeseniPatternB.matcher(satir);
-                Matcher boslukDeseniMatcherB = boslukDeseniPatternB.matcher(satir);
+                Matcher 
+                yorumMatcherB = yorumPatternB.matcher(satir);
+                Matcher 
+                fonksiyonMatcherB = fonksiyonPatternB.matcher(satir);
+                Matcher 
+                kodDeseniMatcherB = kodDeseniPatternB.matcher(satir);
+                Matcher 
+                boslukDeseniMatcherB = boslukDeseniPatternB.matcher(satir);
              
                 if (satir.contains("*") && (!satir.equals("/**")  && !satir.equals("*/"))) 
                 {
@@ -142,10 +165,14 @@ public class Program {
             e.printStackTrace();
         }
 
-        int LOC_B = javadocSatirSayisiB + yorumSatirSayisiB + kodSatirSayisiB + boslukSatirSayisiB;
-        double YG_B = ((javadocSatirSayisiB + yorumSatirSayisiB)*0.8)/fonksiyonSayisiB;
-        double YH_B = (kodSatirSayisiB/fonksiyonSayisiB)*0.3;
-        double yorumSapmaYuzdesiB =  ((100*YG_B))/YH_B-100;
+        int LOC_B = 
+        		javadocSatirSayisiB + yorumSatirSayisiB + kodSatirSayisiB + boslukSatirSayisiB;
+        double YG_B = 
+        		((javadocSatirSayisiB + yorumSatirSayisiB)*0.8)/fonksiyonSayisiB;
+        double YH_B = 
+        		(kodSatirSayisiB/fonksiyonSayisiB)*0.3;
+        double yorumSapmaYuzdesiB =  
+        		((100*YG_B))/YH_B-100;
 
 
         System.out.println("Sınıf: " + "B.java");
@@ -172,10 +199,14 @@ public class Program {
         int fonksiyonSayisiC = 0;
         int boslukSatirSayisiC = 0;
 
-        Pattern javadocPatternC = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
-        Pattern yorumPatternC = Pattern.compile("^\\s*//.*");
-        Pattern kodDeseniPatternC = Pattern.compile("\\S");
-        Pattern boslukDeseniPatternC = Pattern.compile("^\\s*$");
+        Pattern 
+        javadocPatternC = Pattern.compile("^\\s*/\\*{2}.*?\\*/\\s*$");
+        Pattern 
+        yorumPatternC = Pattern.compile("^\\s*//.*");
+        Pattern 
+        kodDeseniPatternC = Pattern.compile("\\S");
+        Pattern 
+        boslukDeseniPatternC = Pattern.compile("^\\s*$");
 
         try {
             URL url = new URL(C_java);
@@ -185,10 +216,14 @@ public class Program {
             while ((satir = reader.readLine()) != null) {
                 satir = satir.trim();
 
-                Matcher javadocMatcherC = javadocPatternC.matcher(satir);
-                Matcher yorumMatcherC = yorumPatternC.matcher(satir);
-                Matcher kodDeseniMatcherC = kodDeseniPatternC.matcher(satir);
-                Matcher boslukDeseniMatcherC = boslukDeseniPatternC.matcher(satir);
+                Matcher 
+                javadocMatcherC = javadocPatternC.matcher(satir);
+                Matcher 
+                yorumMatcherC = yorumPatternC.matcher(satir);
+                Matcher 
+                kodDeseniMatcherC = kodDeseniPatternC.matcher(satir);
+                Matcher 
+                boslukDeseniMatcherC = boslukDeseniPatternC.matcher(satir);
 
                 if (javadocMatcherC.matches())
                 {
@@ -213,14 +248,19 @@ public class Program {
             }
 
             reader.close();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        int LOC_C = javadocSatirSayisiC + yorumSatirSayisiC + kodSatirSayisiC + boslukSatirSayisiC;
-        double YG_C = ((javadocSatirSayisiC + yorumSatirSayisiC) * 0.8) / fonksiyonSayisiC;
-        double YH_C = (kodSatirSayisiC / fonksiyonSayisiC) * 0.3;
-        double yorumSapmaYuzdesiC = ((100 * YG_C)) / YH_C - 100;
+        int 
+        LOC_C = javadocSatirSayisiC + yorumSatirSayisiC + kodSatirSayisiC + boslukSatirSayisiC;
+        double 
+        YG_C = ((javadocSatirSayisiC + yorumSatirSayisiC) * 0.8) / fonksiyonSayisiC;
+        double YH_C = 
+        		(kodSatirSayisiC / fonksiyonSayisiC) * 0.3;
+        double yorumSapmaYuzdesiC = 
+        		((100 * YG_C)) / YH_C - 100;
 
         System.out.println("Sınıf: " + "C.java");
         System.out.println("Javadoc Satır Sayısı: " + javadocSatirSayisiC);
